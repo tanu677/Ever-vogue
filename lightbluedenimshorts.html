@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Light Blue Denim Shorts - EverVogue</title>
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+  <link rel="stylesheet" href="navigation.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@500&display=swap" rel="stylesheet" />
+  <style>
+    /* Same CSS as previous product pages */
+    
+    .product-container {
+      margin-top: 100px;
+      padding: 20px;
+      display: flex;
+      flex-wrap: wrap;
+      max-width: 1200px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .product-images {
+      flex: 1;
+      min-width: 300px;
+      margin-right: 30px;
+    }
+    .main-image {
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+      margin-bottom: 20px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+    .thumbnail-container {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+    .thumbnail {
+      width: 80px;
+      height: 80px;
+      object-fit: cover;
+      border-radius: 5px;
+      cursor: pointer;
+      border: 2px solid transparent;
+      transition: all 0.3s ease;
+    }
+    .thumbnail:hover, .thumbnail.active {
+      border-color: gold;
+    }
+    .product-info {
+      flex: 1;
+      min-width: 300px;
+    }
+    .product-category {
+      font-size: 14px;
+      color: #666;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+    }
+    .product-title {
+      font-size: 28px;
+      margin-bottom: 15px;
+      font-family: 'Montserrat', sans-serif;
+    }
+    .product-rating {
+      font-size: 20px;
+      color: #FFD700;
+      margin-bottom: 15px;
+    }
+    .product-price {
+      font-size: 24px;
+      margin-bottom: 20px;
+      font-weight: bold;
+    }
+    .old-price {
+      text-decoration: line-through;
+      color: red;
+      margin-right: 10px;
+    }
+    .new-price {
+      color: #000;
+    }
+    .product-description {
+      margin-bottom: 20px;
+      line-height: 1.6;
+    }
+    .product-info h3 {
+      margin: 20px 0 10px;
+      font-size: 18px;
+    }
+    .size-options, .color-options {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+    .size-option, .color-option {
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid #ddd;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .size-option:hover, .size-option.active {
+      background-color: black;
+      color: white;
+    }
+    .color-option {
+      border-radius: 50%;
+    }
+    .color-option:hover, .color-option.active {
+      transform: scale(1.1);
+    }
+    .quantity-selector {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+    .quantity-btn {
+      width: 40px;
+      height: 40px;
+      background: white;
+      border: 1px solid #ddd;
+      font-size: 18px;
+      cursor: pointer;
+    }
+    .quantity-input {
+      width: 60px;
+      height: 40px;
+      text-align: center;
+      border: 1px solid #ddd;
+      margin: 0 5px;
+    }
+    .add-to-cart {
+      background: black;
+      color: white;
+      border: none;
+      padding: 15px 30px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      margin-right: 10px;
+      transition: all 0.3s ease;
+    }
+    .add-to-cart:hover {
+      background: gold;
+      color: black;
+    }
+    .add-to-wishlist {
+      background: white;
+      border: 1px solid #ddd;
+      padding: 15px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .add-to-wishlist:hover {
+      background: #f0f0f0;
+    }
+    .product-meta {
+      margin-top: 30px;
+      padding-top: 20px;
+      border-top: 1px solid #ddd;
+      font-size: 14px;
+      color: #666;
+    }
+    .product-meta span {
+      display: block;
+      margin-bottom: 5px;
+    }
+    .product-tabs {
+      margin-top: 40px;
+      width: 100%;
+    }
+    .tab-buttons {
+      display: flex;
+      border-bottom: 1px solid #ddd;
+    }
+    .tab-button {
+      padding: 15px 25px;
+      background: none;
+      border: none;
+      border-bottom: 3px solid transparent;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .tab-button.active {
+      border-bottom-color: gold;
+    }
+    .tab-content {
+      padding: 20px 0;
+      display: none;
+    }
+    .tab-content.active {
+      display: block;
+    }
+    .related-products {
+      margin-top: 60px;
+      width: 100%;
+    }
+    .related-title {
+      font-size: 24px;
+      text-align: center;
+      margin-bottom: 30px;
+      position: relative;
+    }
+    .related-title:after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 3px;
+      background-color: gold;
+    }
+    .related-products-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 20px;
+    }
+    .related-product {
+      background: white;
+      padding: 15px;
+      text-align: center;
+      border-radius: 8px;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+    }
+    .related-product img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 5px;
+      margin-bottom: 10px;
+    }
+    .related-product h4 {
+      font-size: 16px;
+      margin-bottom: 8px;
+    }
+    .related-price {
+      font-weight: bold;
+      font-size: 14px;
+    }
+  </style>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js" crossorigin="anonymous"></script>
+</head>
+<body>
+  <header>
+    <div class="logo-container">
+      <div class="large-letter">E</div><br>
+      <div class="brand-name">EVER</div>
+      <div class="sub-text">VOGUE</div>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="cht.html">HOME</a></li>
+
+        <li><a href="lookbook.html">LOOKBOOK</a></li>
+        <li><a href="profile.html">PROFILE</a></li>
+        
+        <li><a href="contact.html">CONTACT US</a></li>
+      </ul>
+    </nav>
+    <div class="icons">
+      <a href="wishlisht.html"><i class="fas fa-heart"></i></a>
+      <a href="cart.html"><i class="fas fa-shopping-cart"></i></a>
+    </div>
+  </header>
+  <div class="back-to-collection">
+    <a href="summerproducts.html">
+      <i class="fas fa-arrow-left"></i> Back to Summer Collection
+    </a>
+  </div>
+  <div class="product-container">
+    <div class="product-images">
+      <img src="https://rukminim2.flixcart.com/image/832/832/kpwybgw0/short/i/c/h/28-s-02-codeblue-original-imag4fkz6zzdzuwb.jpeg?q=70&crop=false" alt="Light Blue Denim Shorts" class="main-image" />
+      <div class="thumbnail-container">
+        <img src="https://rukminim2.flixcart.com/image/832/832/kpwybgw0/short/i/c/h/28-s-02-codeblue-original-imag4fkz6zzdzuwb.jpeg?q=70&crop=false" alt="Light Blue Denim Shorts Front View" class="thumbnail active" />
+       
+      </div>
+    </div>
+    <div class="product-info">
+      <p class="product-category">Women's Shorts</p>
+      <h1 class="product-title">Light Blue Denim Shorts</h1>
+      <div class="product-rating">★★★★☆ <span style="color:#666; font-size:16px;">(22 reviews)</span></div>
+      <p class="product-price"><span class="new-price">Rs 1100.00</span></p>
+      <div class="product-description">
+        <p>These Light Blue Denim Shorts are a summer essential, featuring a comfortable fit and classic denim style perfect for casual wear.</p>
+      </div>
+      <h3>Size</h3>
+      <div class="size-options">
+        <div class="size-option">S</div>
+        <div class="size-option active">M</div>
+        <div class="size-option">L</div>
+        <div class="size-option">XL</div>
+        <div class="size-option">XXL</div>
+      </div>
+      <h3>Color</h3>
+      <div class="color-options">
+        <div class="color-option active" style="background-color: #add8e6; border: 1px solid #ddd;">Light Blue</div>
+        <div class="color-option" style="background-color: #87ceeb;">Sky Blue</div>
+        <div class="color-option" style="background-color: #b0c4de;">Light Steel Blue</div>
+      </div>
+      <h3>Quantity</h3>
+      <div class="quantity-selector">
+        <button class="quantity-btn">-</button>
+        <input type="text" value="1" class="quantity-input" />
+        <button class="quantity-btn">+</button>
+      </div>
+      <button class="add-to-cart" data-id="204"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
+      <button class="add-to-wishlist" data-id="204"><i class="fas fa-heart"></i> Add to Wishlist</button>
+      <div class="product-meta">
+        <span><strong>SKU:</strong> EMLS-104</span>
+        <span><strong>Categories:</strong> Summer Collection, Women's Shorts</span>
+        <span><strong>Tags:</strong> denim, shorts, light blue, women, summer</span>
+      </div>
+    </div>
+    <div class="product-tabs">
+      <div class="tab-buttons">
+        <button class="tab-button active" data-tab="description">Description</button>
+        <button class="tab-button" data-tab="additional">Additional Information</button>
+        <button class="tab-button" data-tab="reviews">Reviews (22)</button>
+        <button class="tab-button" data-tab="shipping">Shipping & Returns</button>
+      </div>
+      <div id="description" class="tab-content active">
+        <p>These Light Blue Denim Shorts are made from high-quality denim fabric, offering a comfortable fit and classic style perfect for summer casual wear.</p>
+        <h3>Features:</h3>
+        <ul class="feature-list">
+          <li>High-quality denim fabric</li>
+          <li>Comfortable fit</li>
+          <li>Classic denim style</li>
+          <li>Multiple pockets</li>
+          <li>Machine washable</li>
+          <li>Available in multiple sizes</li>
+        </ul>
+      </div>
+      <div id="additional" class="tab-content">
+        <table style="width:100%; border-collapse: collapse;">
+          <tr style="border-bottom: 1px solid #ddd;">
+            <th style="text-align: left; padding: 10px 0;">Material</th>
+            <td style="padding: 10px 0;">100% Cotton Denim</td>
+          </tr>
+          <tr style="border-bottom: 1px solid #ddd;">
+            <th style="text-align: left; padding: 10px 0;">Style</th>
+            <td style="padding: 10px 0;">Casual Shorts</td>
+          </tr>
+          <tr style="border-bottom: 1px solid #ddd;">
+            <th style="text-align: left; padding: 10px 0;">Care Instructions</th>
+            <td style="padding: 10px 0;">Machine wash cold, gentle cycle. Do not bleach.</td>
+          </tr>
+          <tr style="border-bottom: 1px solid #ddd;">
+            <th style="text-align: left; padding: 10px 0;">Country of Origin</th>
+            <td style="padding: 10px 0;">India</td>
+          </tr>
+        </table>
+      </div>
+      <div id="reviews" class="tab-content">
+        <div class="review">
+          <div class="review-header">
+            <span class="review-author">Kavita D.</span>
+            <span class="review-date">May 7, 2025</span>
+          </div>
+          <div class="review-rating">★★★★☆</div>
+          <p>Comfortable and stylish denim shorts. Perfect for summer casual wear.</p>
+        </div>
+        <div class="review">
+          <div class="review-header">
+            <span class="review-author">Rohit S.</span>
+            <span class="review-date">May 3, 2025</span>
+          </div>
+          <div class="review-rating">★★★★★</div>
+          <p>Great quality and fit. I love these shorts for everyday wear.</p>
+        </div>
+      </div>
+      <div id="shipping" class="tab-content">
+        <h3>Shipping Information</h3>
+        <p>We ship all over India via premium courier services.</p>
+        <ul>
+          <li>Standard Shipping: 3-5 business days (₹70)</li>
+          <li>Express Shipping: 1-2 business days (₹150)</li>
+          <li>Free shipping on orders above ₹2500</li>
+        </ul>
+        <h3>Return Policy</h3>
+        <p>We accept returns within 15 days of delivery. Items must be unworn, unwashed, and with original tags attached.</p>
+        <p>To initiate a return:</p>
+        <ol>
+          <li>Login to your account and go to "My Orders"</li>
+          <li>Select the order and items you wish to return</li>
+          <li>Choose reason for return and submit request</li>
+          <li>Package your item securely with original packaging</li>
+          <li>Use the return shipping label provided and drop at nearest courier point</li>
+        </ol>
+        <p>Refunds will be processed within 7-10 business days after the returned item is received and inspected.</p>
+      </div>
+    </div>
+    <div class="related-products">
+      <h2 class="related-title">You May Also Like</h2>
+      <div class="related-products-container">
+        <div class="related-product">
+          <img src="https://assets.ajio.com/medias/sys_master/root/20230515/ZPLC/64624c0642f9e729d7b05ff5/-473Wx593H-464053653-white-MODEL.jpg" alt="Pure Linen White Casual Shirt" />
+          <h4>Pure Linen White Casual Shirt</h4>
+          <p class="related-price">Rs 1250.00</p>
+        </div>
+        <div class="related-product">
+          <img src="https://assets.ajio.com/medias/sys_master/root/20230607/FvSm/647feb8cd55b7d0c636d2f75/-473Wx593H-469414487-black-MODEL.jpg" alt="Classic Black Aviator Sunglasses" />
+          <h4>Classic Black Aviator Sunglasses</h4>
+          <p class="related-price">Rs 1200.00</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    // Tab functionality
+    document.querySelectorAll('.tab-button').forEach(button => {
+      button.addEventListener('click', () => {
+        const tabId = button.getAttribute('data-tab');
+        document.querySelectorAll('.tab-content').forEach(tab => {
+          tab.classList.remove('active');
+        });
+        document.querySelectorAll('.tab-button').forEach(btn => {
+          btn.classList.remove('active');
+        });
+        button.classList.add('active');
+        const tabToShow = document.getElementById(tabId);
+        if (tabToShow) {
+          tabToShow.classList.add('active');
+        }
+      });
+    });
+    // Quantity selector
+    document.querySelectorAll('.quantity-btn').forEach(button => {
+      button.addEventListener('click', () => {
+        const input = button.parentElement.querySelector('.quantity-input');
+        let value = parseInt(input.value);
+        if (button.textContent === '+') {
+          value++;
+        } else if (button.textContent === '-' && value > 1) {
+          value--;
+        }
+        input.value = value;
+      });
+    });
+    // Thumbnail image selection
+    document.querySelectorAll('.thumbnail').forEach(thumbnail => {
+      thumbnail.addEventListener('click', () => {
+        const mainImage = thumbnail.parentElement.parentElement.querySelector('.main-image');
+        mainImage.src = thumbnail.src;
+        thumbnail.parentElement.querySelectorAll('.thumbnail').forEach(thumb => {
+          thumb.classList.remove('active');
+        });
+        thumbnail.classList.add('active');
+      });
+    });
+    // Size selection
+    document.querySelectorAll('.size-option').forEach(option => {
+      option.addEventListener('click', () => {
+        option.parentElement.querySelectorAll('.size-option').forEach(opt => {
+          opt.classList.remove('active');
+        });
+        option.classList.add('active');
+      });
+    });
+    // Color selection
+    document.querySelectorAll('.color-option').forEach(option => {
+      option.addEventListener('click', () => {
+        option.parentElement.querySelectorAll('.color-option').forEach(opt => {
+          opt.classList.remove('active');
+        });
+        option.classList.add('active');
+      });
+    });
+  </script>
+  <script src="store.js"></script>
+</body>
+</html>

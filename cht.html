@@ -1,0 +1,570 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EverVogue</title>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@500&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+
+        /* Header */
+        header {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.3);
+            color: white;
+            z-index: 10;
+        }
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .logo-container {
+            text-align: center;
+            font-family: 'Playfair Display', serif;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .large-letter {
+            font-size: 5rem;
+            font-weight: bold;
+            color: gold;
+            line-height: 0.8;
+        }
+
+        .brand-name {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 500;
+            letter-spacing: 3px;
+            color: gold;
+            margin-top: -20px;
+        }
+
+        .sub-text {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.5rem;
+            font-weight: 500;
+            letter-spacing: 5px;
+            color: gold;
+            margin-top: -10px;
+        }
+    
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+        nav a:hover {
+            color: gold;
+        }
+
+        /* Wishlist & Cart */
+        .icons {
+            display: flex;
+            gap: 15px;
+        }
+        .icons a {
+            color: white;
+            font-size: 20px;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        .icons a:hover {
+            color: gold;
+        }
+
+        /* Hero Section */
+        .hero {
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: relative;
+            background-image: url('https://img.freepik.com/free-photo/woman-model-business-suit-wearing-hat_1303-17693.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0;
+            transform: scale(0.95) translateY(50px);
+            animation: heroAppear 1.2s ease-out forwards;
+}
+@keyframes heroAppear {
+    from {
+        opacity: 1;
+        transform: scale(0.95) translateY(50px);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+        
+        .hero::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+        }
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+        .hero-content h1 {
+            font-size: 48px;
+            margin-bottom: 10px;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            font-weight: bold;
+        }
+        .hero-content p {
+            font-size: 30px;
+            margin-bottom: 20px;
+        }
+        .hero-content button {
+            padding: 10px 20px;
+            font-size: 25px;
+            border: 2px solid gold;
+            background: gold;
+            color: black;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 0 10px gold;
+            border-radius: 8px;
+        }
+        .hero-content button:hover {
+            background: white;
+            color: black;
+            box-shadow: 0 0 15px gold;
+        }
+
+        /* Collections Section */
+        .collections {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            padding: 40px;
+        }
+        .collection-card {
+            position: relative;
+            height: 300px;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            font-size: 20px;
+            font-weight: bold;
+            border-radius: 10px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.3s ease-in-out;
+            text-decoration: none;
+        }
+        .collection-card:active {
+            transform: translateY(5px);
+        }
+        .collection-card.summer {
+            background: url('https://stylebyemilyhenderson.com/wp-content/uploads/2021/06/BoldSummerDresses_HiRes_15-1670x2130-1.jpg') no-repeat center center/cover;
+        }
+        .collection-card.men {
+            background: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQh8pZGzWF6HidnjWjQVQmxnYcf5gpMR9Tctw&s') no-repeat center center/cover;
+        }
+        .collection-card.women {
+            background: url('https://plus.unsplash.com/premium_photo-1682096159299-5e8a6d5d442b?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8dHJhZGl0aW9uYWwlMjB3ZWFyfGVufDB8fDB8fHww') no-repeat center center/cover;
+        }
+        .collection-card.kids {
+            background: url('https://plus.unsplash.com/premium_photo-1661274061055-6f6d0f110ba6?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') no-repeat center center/cover;
+        }
+        .collection-card p {
+            position: relative;
+            z-index: 1;
+        }
+        .collection-card::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4);
+        }
+    .promo-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 50px;
+    background: #f5f5f5;
+    position: relative;
+    background-image: url('https://img.freepik.com/free-vector/stylish-white-background-with-diagonal-lines_1017-33199.jpg');
+    background-size: 100% auto; 
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 300px; 
+}
+
+
+        .promo-text {
+            max-width: 50%;
+        }
+        .promo-text h2 {
+            font-size: 36px;
+            margin-bottom: 10px;
+        }
+        .promo-text p {
+            font-size: 18px;
+            margin-bottom: 20px;
+            color: #555;
+        }
+        .promo-text button {
+            padding: 10px 20px;
+            font-size: 18px;
+            border: none;
+            background: black;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        .promo-text button:hover {
+            background: gold;
+            color: black;
+        }
+        .promo-image {
+            max-width: 50%;
+        }
+        .promo-image img {
+            width: 600px;
+            height: 800px;
+        }
+        .featured-products {
+    text-align: center;
+    padding: 50px 20px;
+    background: #fff;
+}
+
+.featured-products h2 {
+    font-size: 32px;
+    margin-bottom: 20px;
+}
+
+.products-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    justify-content: center;
+}
+
+.product-card {
+    background: #f9f9f9;
+    padding: 15px;
+    border-radius: 10px;
+    text-align: center;
+    position: relative;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+}
+
+.product-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+.category {
+    font-size: 14px;
+    color: gray;
+}
+
+h3 {
+    font-size: 18px;
+    margin: 10px 0;
+}
+
+.price {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.old-price {
+    text-decoration: line-through;
+    color: red;
+    margin-right: 5px;
+}
+
+.new-price {
+    color: #000;
+}
+
+.sale-badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: #333;
+    color: white;
+    padding: 5px 10px;
+    font-size: 12px;
+    border-radius: 50px;
+}
+
+/* Star Rating Styling */
+.rating {
+    font-size: 18px;
+    color: #FFD700; /* Gold color for stars */
+    margin-bottom: 5px;
+}
+
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js" crossorigin="anonymous"></script>
+
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+            <div class="large-letter">E</div><br>
+            <div class="brand-name">EVER</div>
+            <div class="sub-text">VOGUE</div>
+        </div>
+
+        <nav>
+            <ul>
+                <li><a href="cht.html">HOME</a></li>
+              
+                <li><a href="lookbook.html" id="lookbookLink">LOOKBOOK</a></li>
+                <li><a href="profile.html" class="shopLink">PROFILE</a></li>
+                <li><a href="login.html" id="loginLink" style="display:none;">LOGIN</a></li>
+                <li><a href="register.html" id="registerLink" style="display:none;">REGISTER</a></li>
+                <li><a href="login.html" id="logoutLink" style="display:none;">LOGOUT</a></li>
+                
+                <li><a href="contact.html">CONTACT US</a></li>
+            </ul>
+        </nav>
+        <div class="icons">
+            <a href="wishlisht.html" class="shopLink"><i class="fas fa-heart"></i></a> <!-- Wishlist Icon -->
+            <a href="cart.html" class="shopLink"><i class="fas fa-shopping-cart"></i></a> <!-- Cart Icon -->
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <p>SUMMER COLLECTION</p>
+            <h1>Introducing New Arrivals</h1>
+            <p>New styles, fresh looks—because you deserve the best</p>
+            <a href="summerproducts.html" style="text-decoration: none; font-size: 100px;" id="shopLinks"><strong>CLICK HERE</strong></a>
+        </div>
+    </section>
+    <script src="store1.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const lookbookLink = document.getElementById('lookbookLink');
+            const shopLinks = document.querySelectorAll('.shopLink');
+            const loginLink = document.getElementById('loginLink');
+            const registerLink = document.getElementById('registerLink');
+            const logoutLink = document.getElementById('logoutLink');
+
+            function isLoggedIn() {
+                return !!localStorage.getItem('token');
+            }
+
+            function updateNav() {
+                if (isLoggedIn()) {
+                    loginLink.style.display = 'none';
+                    registerLink.style.display = 'none';
+                    logoutLink.style.display = 'inline';
+                } else {
+                    loginLink.style.display = 'inline';
+                    registerLink.style.display = 'inline';
+                    logoutLink.style.display = 'none';
+                }
+            }
+
+            lookbookLink.addEventListener('click', (e) => {
+                e.preventDefault();
+                if (!isLoggedIn()) {
+                    alert('Please login to access the shop.');
+                    window.location.href = 'login.html';
+                } else {
+                    window.location.href = 'lookbook.html';
+                }
+            });
+
+            shopLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    if (!isLoggedIn()) {
+                        alert('Please login to access the shop.');
+                        window.location.href = 'login.html';
+                    } else {
+                        window.location.href = link.getAttribute('href');
+                    }
+                });
+            });
+
+            loginLink.addEventListener('click', (e) => {
+                e.preventDefault();
+                window.location.href = 'login.html';
+            });
+
+            registerLink.addEventListener('click', (e) => {
+                e.preventDefault();
+                window.location.href = 'register.html?redirect=cht.html';
+            });
+
+            logoutLink.addEventListener('click', (e) => {
+                e.preventDefault();
+                localStorage.removeItem('token');
+                updateNav();
+                window.location.href = 'cht.html';
+                window.location.href= 'lookbook.html';
+            });
+
+            updateNav();
+        });
+    </script>
+    <section class="collections">
+  
+    <a href="summerproducts.html" class="collection-link">
+          <div class="collection-card summer">
+            <p>Summer Collection</p>
+        </div>
+
+    </a>
+        <a href="menscollection.html" class="collection-link">
+        <div class="collection-card men">
+            <p>Men's Collection</p>
+        </div>
+        </a>
+        <a href="womencollection.html" class="collection-link">
+            <div class="collection-card women">
+                <p>Women's Collection</p>
+            </div>
+        </a>
+        <a href="kidscollection.html" class="collection-link">
+        <div class="collection-card kids">
+            
+            <p>Kid's Collection</p>
+        </div>
+        </a>
+    </section>
+    
+    <section class="promo-section">
+        <div class="promo-text">
+            <h2>25% OFF</h2>
+            <p>"🛍️ Shop Till You Drop! 🛍️
+                Get 25% OFF on all orders above ₹500! Because nothing haunts you like the fashion you didn’t buy. 💃🔥 Grab it before it's gone!"</p>
+            <button>GRAB THIS OFFER</button>
+        </div>
+        <div class="promo-image">
+            <img src="C:\Users\nigam\Downloads\269369132_11147891.png" alt="Happy woman enjoying shopping">
+        </div>
+    </section>
+    <section class="featured-products">
+        <h2>Featured Products</h2>
+        <div class="products-container">
+            <div class="product-card">
+                <span class="sale-badge">Sale!</span>
+                <img src="https://assets.ajio.com/medias/sys_master/root/20240731/tCqY/66aa6a581d763220fa5204f9/-473Wx593H-700194318-black-MODEL.jpg" alt="Black Blue Sport Shoes">
+                <p class="category">Men's Shoes</p>
+                <h3>DNK Black Blue Sport Shoes</h3>
+                <div class="rating">★★★★★</div>
+                <p class="price"><span class="old-price">Rs 1500.00</span> <span class="new-price">Rs 1200.00</span></p>
+            </div>
+    
+            <div class="product-card">
+                <img src="https://n.nordstrommedia.com/it/988f169c-cb47-428f-84d6-cc2c68cba552.jpeg?h=365&w=240&dpr=2" alt="Dark Brown Jeans">
+                <p class="category">Men's Jeans</p>
+                <h3>Dark Brown Jeans</h3>
+                <div class="rating">&starf;&starf;&starf;&starf;&star;</div>
+                <p class="price"><span class="new-price">Rs 1450.00</span></p>
+            </div>
+    
+            <div class="product-card">
+                <span class="sale-badge">Sale!</span>
+                <img src="https://assets.adidas.com/images/w_600,f_auto,q_auto/de07c2d986a84677a265ae270188f36c_9366/Ultraboost_DNA_Shoes_Red_GV8712_09_standard.jpg" alt="Red Sport Shoes">
+                <p class="category">Men's Shoes</p>
+                <h3>DNK Red Sport Shoes</h3>
+                <div class="rating">★★★★★</div>
+                <p class="price"><span class="old-price">Rs 3500.00</span> <span class="new-price">Rs 2000.00</span></p>
+            </div>
+    
+            <div class="product-card">
+                <span class="sale-badge">Sale!</span>
+                <img src="https://d1it09c4puycyh.cloudfront.net/920x1300/catalog/product/8/9/89rt-608-dark_blue_1-1.jpg" alt="Blue Denim Shorts">
+                <p class="category">Women's Jeans</p>
+                <h3>Blue Denim Shorts</h3>
+                <div class="rating">★★★☆☆</div>
+                <p class="price"><span class="old-price">Rs 3000.00</span> <span class="new-price">Rs 1500.00</span></p>
+            </div>
+    
+            <div class="product-card">
+                <span class="sale-badge">Sale!</span>
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSiuF-se3eAsUKh9TIFSa8iMKQ1AQFHld1N0g&s" alt="Skinny Jeans">
+                <p class="category">Women's Jeans</p>
+                <h3>Skinny Blue Jeans</h3>
+                <div class="rating">★★★★&#9733</div>
+                <p class="price"><span class="new-price">Rs 1500.00</span></p>
+            </div>
+    
+            <div class="product-card">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTYVpi2514HLUKRNMtuK8NVpWeoE8dsSSkPdg&s" alt="Silver Heart Bracelet">
+                <p class="category">Jewelry</p>
+                <h3>Silver Heart Bracelet</h3>
+                <div class="rating">★★★☆☆</div>
+                <p class="price"><span class="new-price">Rs 200.00</span></p>
+            </div>
+    
+            <div class="product-card">
+                <span class="sale-badge">Sale!</span>
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQvVh5P-l8696WVVVD9OlpAdQhNf8VM9n8GBg&s" alt="Black Leather Bracelet">
+                <p class="category">Jewelry</p>
+                <h3>Black Leather Bracelet</h3>
+                <div class="rating">★★★★☆</div>
+                <p class="price"><span class="old-price">Rs 300.00</span> <span class="new-price">Rs 100.00</span></p>
+            </div>
+    
+            <div class="product-card">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRGb5djzGuWxTysHOyPVUjEeNJypaq7fR4Dw8QmuyjoqWyvbyBmxOEjrOM&s" alt="Black Handbag">
+                <p class="category">Accessories</p>
+                <h3>Black Leather Handbag</h3>
+                <div class="rating">★★★★★</div>
+                <p class="price"><span class="new-price">Rs 1000.00</span></p>
+            </div>
+        </div>
+    </section>
+    
+</body>
+</html>

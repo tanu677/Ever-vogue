@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EverVogue - Wishlist</title>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@500&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #f8f8f8;
+        }
+
+        /* Header */
+        header {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background: #000;
+            color: white;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo-container {
+            text-align: center;
+            font-family: 'Playfair Display', serif;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .large-letter {
+            font-size: 3rem;
+            font-weight: bold;
+            color: gold;
+            line-height: 0.8;
+        }
+
+        .brand-name {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1rem;
+            font-weight: 500;
+            letter-spacing: 3px;
+            color: gold;
+            margin-top: -10px;
+        }
+
+        .sub-text {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.4rem;
+            font-weight: 500;
+            letter-spacing: 5px;
+            color: gold;
+            margin-top: -5px;
+        }
+    
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+        
+        nav a:hover {
+            color: gold;
+        }
+
+        /* Icons */
+        .icons {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .icons a {
+            color: white;
+            font-size: 20px;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .icons a:hover {
+            color: gold;
+        }
+        
+        .active-icon {
+            color: gold !important;
+        }
+
+        /* Main content */
+        .page-title {
+            text-align: center;
+            padding: 40px 0;
+            font-family: 'Playfair Display', serif;
+            font-size: 32px;
+        }
+
+        .wishlist-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px 50px;
+        }
+
+        .wishlist-empty {
+            text-align: center;
+            padding: 100px 0;
+        }
+
+        .wishlist-empty i {
+            font-size: 60px;
+            color: #ddd;
+            margin-bottom: 20px;
+        }
+
+        .wishlist-empty h3 {
+            font-size: 22px;
+            margin-bottom: 15px;
+            color: #555;
+        }
+
+        .continue-shopping {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 12px 25px;
+            background-color: black;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        .continue-shopping:hover {
+            background-color: gold;
+            color: black;
+        }
+
+        .wishlist-items {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 25px;
+        }
+
+        .wishlist-item {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: relative;
+            transition: transform 0.3s;
+        }
+
+        .wishlist-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .wishlist-item img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        .wishlist-item-info {
+            padding: 15px;
+        }
+
+        .wishlist-item-category {
+            color: #777;
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+
+        .wishlist-item-title {
+            font-size: 16px;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        .wishlist-item-price {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .old-price {
+            text-decoration: line-through;
+            color: #999;
+            margin-right: 10px;
+        }
+
+        .current-price {
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        .item-actions {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .add-to-cart {
+            padding: 8px 15px;
+            background: black;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+            border-radius: 4px;
+            transition: background 0.3s;
+        }
+
+        .add-to-cart:hover {
+            background: gold;
+            color: black;
+        }
+
+        .remove-item {
+            background: none;
+            border: none;
+            color: #777;
+            cursor: pointer;
+            font-size: 20px;
+            transition: color 0.3s;
+        }
+
+        .remove-item:hover {
+            color: red;
+        }
+
+        .sale-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: #333;
+            color: white;
+            padding: 5px 10px;
+            font-size: 12px;
+            border-radius: 50px;
+        }
+
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+            }
+            
+            .wishlist-items {
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            }
+        }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+            <div class="large-letter">E</div><br>
+            <div class="brand-name">EVER</div>
+            <div class="sub-text">VOGUE</div>
+        </div>
+
+        <nav>
+            <ul>
+                <li><a href="#">HOME</a></li>
+                <li><a href="#">SHOP</a></li>
+                <li><a href="#">LOOKBOOK</a></li>
+                <li><a href="#">PROFILE</a></li>
+                <li><a href="#">ABOUT US</a></li>
+                <li><a href="#">CONTACT US</a></li>
+            </ul>
+        </nav>
+        
+        <div class="icons">
+            <a href="#" class="active-icon"><i class="fas fa-heart"></i></a>
+            <a href="cart.html"><i class="fas fa-shopping-cart"></i></a>
+        </div>
+    </header>
+
+    <main>
+        <h1 class="page-title">My Wishlist</h1>
+        
+        <div class="wishlist-container">
+            <!-- If wishlist has items -->
+            <div class="wishlist-items">
+                <div class="wishlist-item">
+                    <span class="sale-badge">Sale!</span>
+                    <img src="https://assets.ajio.com/medias/sys_master/root/20240731/tCqY/66aa6a581d763220fa5204f9/-473Wx593H-700194318-black-MODEL.jpg" alt="Black Blue Sport Shoes">
+                    <div class="wishlist-item-info">
+                        <p class="wishlist-item-category">Men's Shoes</p>
+                        <h3 class="wishlist-item-title">DNK Black Blue Sport Shoes</h3>
+                        <div class="wishlist-item-price">
+                            <span class="old-price">Rs 1500.00</span>
+                            <span class="current-price">Rs 1200.00</span>
+                        </div>
+                        <div class="item-actions">
+                            <button class="add-to-cart">Add to Cart</button>
+                            <button class="remove-item"><i class="fas fa-trash"></i></button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="wishlist-item">
+                    <img src="https://n.nordstrommedia.com/it/988f169c-cb47-428f-84d6-cc2c68cba552.jpeg?h=365&w=240&dpr=2" alt="Dark Brown Jeans">
+                    <div class="wishlist-item-info">
+                        <p class="wishlist-item-category">Men's Jeans</p>
+                        <h3 class="wishlist-item-title">Dark Brown Jeans</h3>
+                        <div class="wishlist-item-price">
+                            <span class="current-price">Rs 1450.00</span>
+                        </div>
+                        <div class="item-actions">
+                            <button class="add-to-cart">Add to Cart</button>
+                            <button class="remove-item"><i class="fas fa-trash"></i></button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="wishlist-item">
+                    <span class="sale-badge">Sale!</span>
+                    <img src="https://assets.adidas.com/images/w_600,f_auto,q_auto/de07c2d986a84677a265ae270188f36c_9366/Ultraboost_DNA_Shoes_Red_GV8712_09_standard.jpg" alt="Red Sport Shoes">
+                    <div class="wishlist-item-info">
+                        <p class="wishlist-item-category">Men's Shoes</p>
+                        <h3 class="wishlist-item-title">DNK Red Sport Shoes</h3>
+                        <div class="wishlist-item-price">
+                            <span class="old-price">Rs 3500.00</span>
+                            <span class="current-price">Rs 2000.00</span>
+                        </div>
+                        <div class="item-actions">
+                            <button class="add-to-cart">Add to Cart</button>
+                            <button class="remove-item"><i class="fas fa-trash"></i></button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="wishlist-item">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRGb5djzGuWxTysHOyPVUjEeNJypaq7fR4Dw8QmuyjoqWyvbyBmxOEjrOM&s" alt="Black Handbag">
+                    <div class="wishlist-item-info">
+                        <p class="wishlist-item-category">Accessories</p>
+                        <h3 class="wishlist-item-title">Black Leather Handbag</h3>
+                        <div class="wishlist-item-price">
+                            <span class="current-price">Rs 1000.00</span>
+                        </div>
+                        <div class="item-actions">
+                            <button class="add-to-cart">Add to Cart</button>
+                            <button class="remove-item"><i class="fas fa-trash"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Uncomment this and comment out the wishlist-items div to show empty state
+            <div class="wishlist-empty">
+                <i class="far fa-heart"></i>
+                <h3>Your wishlist is empty</h3>
+                <p>Add items to your wishlist by clicking the heart icon on products you love.</p>
+                <a href="#" class="continue-shopping">Continue Shopping</a>
+            </div>
+            -->
+        </div>
+    </main>
+    <script src="store1.js"></script>
+</body>
+</html>

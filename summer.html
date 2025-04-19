@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Summer Collection</title>
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@500&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js" crossorigin="anonymous"></script>
+  <style>
+    * { box-sizing: border-box; 
+      margin: 0; 
+      padding: 0; 
+    }
+    body { 
+      font-family: Arial, sans-serif; 
+      background-color: #f8f8f8; 
+      text-align: center; 
+      display: flex; 
+      flex-direction: column; }
+    header {
+      position: fixed; top: 0; left: 0; width: 100%;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 15px 20px; background: grey; color: white; z-index: 1000;
+    }
+    .logo-container { text-align: center; font-family: 'Playfair Display', serif; }
+    .large-letter { font-size: 2.5rem; font-weight: bold; color: gold; }
+    .brand-name, .sub-text { font-family: 'Montserrat', sans-serif; color: gold; }
+    .sub-text { font-size: 0.7rem; }
+    nav ul { list-style: none; display: flex; gap: 15px; }
+    nav a { color: white; text-decoration: none; font-weight: bold; }
+    nav a:hover { color: gold; }
+    .icons a { color: white; font-size: 20px; margin-left: 15px; }
+    .icons a:hover { color: gold; }
+    .main-container {
+      display: flex; margin-top: 100px; padding: 20px;
+      justify-content: center; flex-wrap: wrap;
+    }
+    .sidebar {
+            width: 230px;
+            background: white;
+            padding: 20px;
+            height: 100vh;
+            position: fixed;
+            left: 0;
+            top: 80px;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+        }
+
+    .category-section {
+            display: flex;
+            flex-direction: column;
+            gap: 35px;
+            max-width: 100%;
+        }
+
+        .category-row {
+    display: flex;
+    justify-content: space-evenly; /* Keep spacing uniform */
+    gap: 20px;
+    flex-wrap: wrap; /* Ensure proper alignment on smaller screens */
+}
+
+
+        .category {
+    width: 180px; /* Fixed width for all items */
+    text-align: center;
+    position: relative;
+}
+
+
+        .category img {
+    width: 100%; /* Make images fill the container */
+    height: 180px; /* Set a uniform height */
+    object-fit: cover; /* Crop images to fit without distortion */
+    border-radius: 10px;
+    transition: transform 0.3s ease-in-out;
+}
+
+
+        .category img:hover {
+            transform: scale(1.05);
+        }
+        .category h3, .category p {
+    margin: 8px 0; /* Keep text spacing consistent */
+}
+
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo-container">
+      <div class="large-letter">E</div>
+      <div class="brand-name">EVER</div>
+      <div class="sub-text">VOGUE</div>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="#">HOME</a></li>
+        <li><a href="#">SHOP</a></li>
+        <li><a href="#">LOOKBOOK</a></li>
+        <li><a href="#">PROFILE</a></li>
+        <li><a href="#">ABOUT US</a></li>
+        <li><a href="#">CONTACT US</a></li>
+      </ul>
+    </nav>
+    <div class="icons">
+      <a href="#"><i class="fas fa-heart"></i></a>
+      <a href="#"><i class="fas fa-shopping-cart"></i></a>
+    </div>
+  </header>
+  <div class="sidebar">
+    <br><br>
+    <h3>Filter by Price</h3>
+    <input type="range" min="200" max="10000" value="1000" class="price-range" id="priceFilter">
+    <p>Max Price: Rs<span class="price-value" id="priceValue">1000</span></p>
+</div>
+  <div class="main-container">
+    <div class="content">
+      <h2>SUMMER ESSENTIALS</h2>
+      <div class="category-section">
+        <div class="category-row">
+          <div class="category">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSXKD2eCPoktWF865fYkWKxdW9SptVxNkQYiw&s" alt="Linen Shirts">
+            <h3>Linen Shirts</h3>
+            <p>Light and breathable</p>
+            <a href="#">+ EXPLORE</a>
+          </div>
+          <div class="category">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTkg-GVV93-jxAAFeZXpW8fLbeOf_3jKYQGlA&s" alt="Cotton Shorts">
+            <h3>Cotton Shorts</h3>
+            <p>Stay cool and stylish</p>
+            <a href="#">+ EXPLORE</a>
+          </div>
+        
+        
+          <div class="category">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQDen9boeuBWd0CMK-xsU2hXG0flXIcTmcAqA&s" alt="Beachwear">
+            <h3>Beachwear</h3>
+            <p>Perfect for the shore</p>
+            <a href="#">+ EXPLORE</a>
+          </div>
+          <div class="category">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQpVeH8IJ7Tp8UFbmYqJRPtV0pjVg67XM977g&s" alt="Sunglasses">
+            <h3>Sunglasses</h3>
+            <p>Protect your eyes in style</p>
+            <a href="#">+ EXPLORE</a>
+          </div>
+        </div>
+        <div class="category-row">
+          <div class="category">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTnR5O0hC02ve2uJtqH2TWWK5RgkdjGl4wFwA&s" alt="Tank Tops">
+            <h3>Tank Tops</h3>
+            <p>Casual and comfortable</p>
+            <a href="#">+ EXPLORE</a>
+          </div>
+          <div class="category">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTir-ewXdp0hzBZFBBXAIr6FWsjXFFMSUUQDA&s" alt="Flip Flops">
+            <h3>Flip Flops</h3>
+            <p>Relaxed summer vibes</p>
+            <a href="#">+ EXPLORE</a>
+          </div>
+       
+          <div class="category">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR4euCfVWZI3_z4_y2MVqnMjU9Vx11YZVrNYg&s" alt="Light Blazers">
+            <h3>Light Blazers</h3>
+            <p>Stay sharp, stay cool</p>
+            <a href="#">+ EXPLORE</a>
+          </div>
+          <div class="category">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT8S4sn2aXZwb6MkJ7MTFZV2jcBpOAy80_coA&s" alt="Straw Hats">
+            <h3>Straw Hats</h3>
+            <p>Ultimate summer accessory</p>
+            <a href="#">+ EXPLORE</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

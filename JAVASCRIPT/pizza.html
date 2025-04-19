@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script>
+            function describepizza(element){
+                const pizzatype=element.parentNode.id;
+                const existingContainer = document.getElementById("description-container");
+                if(existingContainer) {
+                    existingContainer.remove();
+                }
+                const container=document.createElement("div");
+                container.id="description-container";
+                const heading=document.createElement("h2");
+                const para=document.createElement("p");
+                const image=document.createElement("img")
+                
+
+                const b=document.createElement("button");
+
+
+                if(pizzatype=="butterchicken"){
+                    heading.textContent="ButterChicken Pizza";
+                    para.textContent="It has an ultra pizza crust and is topped with saucy butter chicken,red oninons,tomatoes,fresh gooey mozzarella cheese, and a sprinkle od parsley.Make it in entirely in a cast-iron or oven-safe skillet in about 10 minutes";
+                    image.src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRyRAJDn9FCF9GYXle5vYjKIh0C2vJOiFjPiw&s";
+                    b.textContent="Back at top";
+
+                }
+                else if(pizzatype=="sweet&sour"){
+                    heading.textContent="Sweeet and Sour Chicken Pizza";
+                    para.textContent="Just as its name suggests, this chicken dosh has elements of sweetness and sourness wrapped in the souce. What is this? You can imagine its taste as a fried chicken that is sweet and tamgy.The texture of the chicken is tender and juicy,a and it van be crunchy depending on how you prepare it.";
+                    image.src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQK1azeS8cImmkWH9lzwo6AmoPFHG0oZoyIFA&s";
+                    b.textContent="Back at top";
+
+                }
+                else if(pizzatype=="Assorted"){
+                    heading.textContent="Assorted Veg Pizza"
+                    para.textContent="It has (almost) everything: roasted red peppers, baby spinach,onions,mushrooms,tomatoes and black olives.it's also topped with three kinds of cheese-feta,prvolane,and mozzarella-and sprinkled with garlic herb seasoning."
+                    image.src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTI3X4_3IqQcRKBbMewy6eUoxCx2AWYPqYsXQ&s";
+                    b.textContent="Back at top";
+                }
+                b.onclick=function(){
+                    const dc=document.getElementById("description-container");
+                    if(dc){
+                          dc.remove();
+                    }
+                }
+                container.appendChild(heading);
+                container.appendChild(para);
+                container.appendChild(image);
+                container.appendChild(b);
+
+                document.body.appendChild(container);
+
+                return false;
+            }
+        </script>
+    </head>
+    <style>
+        body{
+            background-image: url('https://static.vecteezy.com/system/resources/thumbnails/004/398/834/small/seamless-pattern-of-black-and-white-pizza-repeat-background-with-isolated-monochrome-pizza-pieces-cheese-tomato-pepper-basil-mushroom-sausage-salami-bacon-olive-shrimp-mozzarella-vector.jpg');
+        }
+        h1{
+            color:brown;
+            font-family: 'Times New Roman', Times, serif;
+        }
+        div{
+            display:block;
+            margin: 10px 0;
+            padding: 10px 5px;
+            border: 1px solid brown;
+
+
+        }
+        a{
+            text-decoration:none;
+            font-size:14px;
+            display: block;
+            border:1px solid brown;
+            margin: 20px;
+            
+        }
+        
+        button{
+            border-radius: 10px;
+            background-color: brown;
+            color:white;
+
+        }
+
+    </style>
+    <body>
+        <h1>Menu</h1>
+        <div id="butterchicken">
+        <a href="#" onclick=" return describepizza(this)">ButterChicken Pizza</a>
+        </div>
+        <div id="sweet&sour">
+        <a href="#" onclick="return describepizza(this)">Sweet and Sour Chicken Pizza</a>
+        </div>
+        <div id="Assorted">
+            <a href="#" onclick="return describepizza(this)">Assorted Veg Pizza</a>
+        </div>
+
+
+
+    </body>
+</html>

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Men's Collection</title>
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@500&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js" crossorigin="anonymous"></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: Arial, sans-serif; background-color: #f8f8f8; text-align: center; display: flex; flex-direction: column; }
+    header {
+      position: fixed; top: 0; left: 0; width: 100%;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 15px 20px; background: grey; color: white; z-index: 1000;
+    }
+    .logo-container { text-align: center; font-family: 'Playfair Display', serif; }
+    .large-letter { font-size: 2.5rem; font-weight: bold; color: gold; }
+    .brand-name, .sub-text { font-family: 'Montserrat', sans-serif; color: gold; }
+    .sub-text { font-size: 0.7rem; }
+    nav ul { list-style: none; display: flex; gap: 15px; }
+    nav a { color: white; text-decoration: none; font-weight: bold; }
+    nav a:hover { color: gold; }
+    .icons a { color: white; font-size: 20px; margin-left: 15px; }
+    .icons a:hover { color: gold; }
+    .sidebar {
+      width: 250px; background: white; padding: 20px; height: 100vh;
+      position: fixed; left: 0; top: 80px; box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+    }
+    .main-container {
+      display: flex; margin-top: 100px; margin-left: 270px; padding: 20px;
+      width: calc(100% - 270px);
+    }
+    .category-section { display: flex; flex-direction: column; gap: 30px; }
+    .category-row { display: flex; flex-wrap: wrap; justify-content: space-around; gap: 5px; }
+    .category { width: 45%; text-align: center; }
+    .category img { width: 60%; border-radius: 10px; transition: transform 0.3s ease-in-out; }
+    .category img:hover { transform: scale(1.05); }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo-container">
+      <div class="large-letter">E</div>
+      <div class="brand-name">EVER</div>
+      <div class="sub-text">VOGUE</div>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="#">HOME</a></li>
+        <li><a href="#">SHOP</a></li>
+        <li><a href="#">LOOKBOOK</a></li>
+        <li><a href="#">PROFILE</a></li>
+        <li><a href="#">ABOUT US</a></li>
+        <li><a href="#">CONTACT US</a></li>
+      </ul>
+    </nav>
+    <div class="icons">
+      <a href="#"><i class="fas fa-heart"></i></a>
+      <a href="#"><i class="fas fa-shopping-cart"></i></a>
+    </div>
+  </header>
+
+  <div class="sidebar">
+    <br><br>
+    <h3>Filter by Price</h3>
+    <input type="range" min="200" max="10000" value="1000" class="price-range" id="priceFilter">
+    <p>Max Price: Rs<span class="price-value" id="priceValue">1000</span></p>
+  </div>
+
+  <div class="main-container">
+    <div class="content">
+      <h2>TRENDING IN WESTERN WEAR</h2>
+      <div class="category-section">
+        <div class="category-row">
+          <!-- Denim Jackets -->
+          <div class="category">
+            <img src="https://assets.myntassets.com/h_1440,q_100,w_1080/v1/assets/images/10617886/2023/2/21/04dd16f8-923a-497b-9797-c077374088e71676971835253-Roadster-Men-Blue-Solid-Denim-Jacket-9241676971834608-1.jpg" alt="Denim Jackets">
+            <h3>Denim Jackets</h3>
+            <p>Rugged and timeless</p>
+            <a href="#">+ EXPLORE</a>
+          </div>
+          <!-- Casual Shirts -->
+          <div class="category">
+            <img src="https://godwincharli.com/cdn/shop/collections/Group_2_40d59f9c-5889-497f-8361-87d06bf55551.jpg?v=1649759736" alt="Casual Shirts">
+            <h3>Casual Shirts</h3>
+            <p>Effortlessly stylish</p>
+            <a href="#">+ EXPLORE</a>
+          </div>
+       
+          <!-- Streetwear Tees -->
+          <div class="category">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSMckPMxR3I72dQclqggnfCtz9TcatFchtN2w&s" alt="Streetwear Tees">
+            <h3>Streetwear Tees</h3>
+            <p>Urban and edgy</p>
+            <a href="#">+ EXPLORE</a>
+          </div>
+          <!-- Chinos & Trousers -->
+          <div class="category">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTpdAcLgEmH_yp68YlJHDapnAUJAxDJTxaYYg&s" alt="Chinos & Trousers">
+            <h3>Chinos & Trousers</h3>
+            <p>Smart casual essentials</p>
+            <a href="#">+ EXPLORE</a>
+          </div>
+        </div>
+      </div>
+      
+      <h2>TRENDING IN ETHNIC WEAR</h2>
+      <div class="category-section">
+        <div class="category-row">
+          <!-- Kurtas -->
+          <div class="category">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ5DYAExO4iNnkyTnCaRDE4fPyp1LxcBwJA4Q&s" alt="Kurtas">
+            <h3>Kurtas</h3>
+            <p>Elegant traditional attire</p>
+            <a href="#">+ EXPLORE</a>
+          </div>
+          <!-- Sherwanis -->
+          <div class="category">
+            <img src="https://img.perniaspopupshop.com/catalog/product/z/o/ZOOP102451_1.jpg?impolicy=detailimageprod" alt="Sherwanis">
+            <h3>Sherwanis</h3>
+            <p>Royal and refined</p>
+            <a href="#">+ EXPLORE</a>
+          </div>
+        </div>
+        <div class="category-row">
+          <!-- Nehru Jackets -->
+          <div class="category">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSVz5TIIzNLPaJD91d2O4f5NG3Qkq2P9cL_Kw&s" alt="Nehru Jackets">
+            <h3>Nehru Jackets</h3>
+            <p>Classic with a modern twist</p>
+            <a href="#">+ EXPLORE</a>
+          </div>
+          <!-- Dhoti Pants -->
+          <div class="category">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQY2jMTraFEhGjQLxJETQIu-iiGDBBb_WWa3Q&s" alt="Dhoti Pants">
+            <h3>Dhoti Pants</h3>
+            <p>Traditional with contemporary style</p>
+            <a href="#">+ EXPLORE</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

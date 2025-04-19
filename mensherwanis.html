@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sherwanis - Streettees</title>
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@500&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: Arial, sans-serif; background-color: #f8f8f8; }
+    header { position: fixed; top: 0; left: 0; width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 15px 20px; background: grey; color: white; z-index: 1000; }
+    .logo-container { text-align: center; font-family: 'Playfair Display', serif; display: flex; flex-direction: column; align-items: center; }
+    .large-letter { font-size: 2.5rem; font-weight: bold; color: gold; line-height: 0.8; }
+    .brand-name { font-family: 'Montserrat', sans-serif; font-size: 1.2rem; font-weight: 500; letter-spacing: 3px; color: gold; }
+    .sub-text { font-family: 'Montserrat', sans-serif; font-size: 0.7rem; font-weight: 500; letter-spacing: 5px; color: gold; }
+    nav ul { list-style: none; display: flex; gap: 15px; }
+    nav a { color: white; text-decoration: none; font-weight: bold; transition: color 0.3s ease; }
+    nav a:hover { color: gold; }
+    .icons { display: flex; gap: 15px; }
+    .icons a { color: white; font-size: 20px; text-decoration: none; transition: color 0.3s ease; }
+    .icons a:hover { color: gold; }
+    .product-nav { margin-top: 80px; text-align: center; }
+    .product-nav-btn { background: none; border: none; font-size: 16px; padding: 10px 20px; cursor: pointer; transition: color 0.3s ease; }
+    .product-nav-btn:hover { color: gold; }
+    .product-container { margin: 20px auto 60px; padding: 20px; display: flex; flex-wrap: wrap; max-width: 1200px; background: white; border-radius: 8px; box-shadow: 0 3px 8px rgba(0,0,0,0.1); }
+    .product-images { flex: 1; min-width: 300px; margin-right: 30px; }
+    .main-image { width: 100%; height: auto; border-radius: 10px; margin-bottom: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+    .thumbnail-container { display: flex; gap: 10px; margin-bottom: 20px; }
+    .thumbnail { width: 80px; height: 80px; object-fit: cover; border-radius: 5px; cursor: pointer; border: 2px solid transparent; transition: all 0.3s ease; }
+    .thumbnail:hover, .thumbnail.active { border-color: gold; }
+    .product-info { flex: 1; min-width: 300px; }
+    .product-category { font-size: 14px; color: #666; margin-bottom: 10px; text-transform: uppercase; }
+    .product-badge { display: inline-block; background: gold; color: white; padding: 5px 10px; font-size: 12px; margin-bottom: 10px; border-radius: 4px; }
+    .product-title { font-size: 28px; margin-bottom: 15px; font-family: 'Montserrat', sans-serif; }
+    .product-rating { font-size: 20px; color: #FFD700; margin-bottom: 15px; }
+    .product-price { font-size: 24px; margin-bottom: 20px; font-weight: bold; }
+    .old-price { text-decoration: line-through; color: red; margin-right: 10px; }
+    .new-price { color: #000; }
+    .product-description { margin-bottom: 20px; line-height: 1.6; }
+    .product-info h3 { margin: 20px 0 10px; font-size: 18px; }
+    .size-options, .color-options { display: flex; gap: 10px; margin-bottom: 20px; }
+    .size-option, .color-option { width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; border: 1px solid #ddd; cursor: pointer; transition: all 0.3s ease; }
+    .size-option:hover, .size-option.active { background-color: black; color: white; }
+    .color-option { border-radius: 50%; }
+    .color-option:hover, .color-option.active { transform: scale(1.1); }
+    .quantity-selector { display: flex; align-items: center; margin-bottom: 20px; }
+    .quantity-btn { width: 40px; height: 40px; background: white; border: 1px solid #ddd; font-size: 18px; cursor: pointer; }
+    .quantity-input { width: 60px; height: 40px; text-align: center; border: 1px solid #ddd; margin: 0 5px; }
+    .add-to-cart { background: black; color: white; border: none; padding: 15px 30px; font-size: 16px; font-weight: bold; cursor: pointer; margin-right: 10px; transition: all 0.3s ease; }
+    .add-to-cart:hover { background: gold; color: black; }
+    .add-to-wishlist { background: white; border: 1px solid #ddd; padding: 15px 20px; font-size: 16px; cursor: pointer; transition: all 0.3s ease; }
+    .add-to-wishlist:hover { background: #f0f0f0; }
+    .product-meta { margin-top: 30px; padding-top: 20px; border-top: 1px solid #ddd; font-size: 14px; color: #666; }
+    .product-meta span { display: block; margin-bottom: 5px; }
+    .product-tabs { margin-top: 40px; width: 100%; }
+    .tab-buttons { display: flex; border-bottom: 1px solid #ddd; }
+    .tab-button { padding: 15px 25px; background: none; border: none; border-bottom: 3px solid transparent; font-weight: bold; cursor: pointer; }
+    .tab-button.active { border-bottom-color: gold; }
+    .tab-content { padding: 20px 0; display: none; }
+    .tab-content.active { display: block; }
+    .related-products { margin-top: 60px; width: 100%; }
+    .related-title { font-size: 24px; text-align: center; margin-bottom: 30px; position: relative; }
+    .related-title:after { content: ''; position: absolute; bottom: -10px; left: 50%; transform: translateX(-50%); width: 60px; height: 3px; background-color: gold; }
+    .related-products-container { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 20px; }
+    .related-product { background: white; padding: 15px; text-align: center; border-radius: 8px; box-shadow: 0 3px 8px rgba(0,0,0,0.1); }
+    .related-product img { width: 100%; height: 180px; object-fit: cover; border-radius: 5px; margin-bottom: 10px; }
+    .related-product h4 { font-size: 16px; margin-bottom: 8px; }
+    .related-price { font-weight: bold; font-size: 14px; }
+  </style>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js" crossorigin="anonymous"></script>
+</head>
+<body>
+  <header>
+    <div class="logo-container">
+      <div class="large-letter">E</div>
+      <div class="brand-name">EVER</div>
+      <div class="sub-text">VOGUE</div>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="#">HOME</a></li>
+        <li><a href="#">DROP</a></li>
+        <li><a href="#">LOOKBOOK</a></li>
+        <li><a href="#">MY FITS</a></li>
+        <li><a href="#">ABOUT</a></li>
+        <li><a href="#">CONTACT</a></li>
+      </ul>
+    </nav>
+    <div class="icons">
+      <a href="wishlist.html"><i class="fas fa-heart"></i></a>
+      <a href="cart.html"><i class="fas fa-shopping-cart"></i></a>
+    </div>
+  </header>
+
+  <div class="product-nav">
+    <button class="product-nav-btn" id="showProduct1">Regal Wedding Sherwani</button>
+    <button class="product-nav-btn" id="showProduct2">Classic Festive Sherwani</button>
+  </div>
+
+  <div id="product1" class="product-container">
+  <div class="product-images">
+    <img
+      src="https://www.sarisandthings.com/cdn/shop/products/bl-2032-1_72c66bd6-3bf1-41f3-8d4b-4b28516ad684_1024x.jpg?v=1569112126"
+      alt="Regal Wedding Sherwani"
+      class="main-image"
+    >
+    <div class="thumbnail-container">
+      <img
+        src="https://www.sarisandthings.com/cdn/shop/products/bl-2032-2_818240ec-94f0-401b-ae3b-035db04b5184_1024x.jpg?v=1569112126"
+        alt="Front View"
+        class="thumbnail active"
+      >
+      <img
+        src="https://www.sarisandthings.com/cdn/shop/products/bl-2032-3_233ef40f-eb4c-4d24-aa31-90fb4efb8371_1024x.jpg?v=1569112126"
+        alt="Back View"
+        class="thumbnail"
+      >
+      <img
+        src="https://images.pexels.com/photos/28758797/pexels-photo-28758797.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+        alt="Side View"
+        class="thumbnail"
+      >
+      <img
+        src="https://images.pexels.com/photos/28802603/pexels-photo-28802603.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+        alt="Detail View"
+        class="thumbnail"
+      >
+    </div>
+  </div>
+  <!-- rest of your product-info, tabs, related-products, etc. -->
+
+
+  
+
+
+    <div class="product-info">
+      <p class="product-category">Sherwanis</p>
+      <span class="product-badge">Wedding Edit</span>
+      <h1 class="product-title">Regal Wedding Sherwani</h1>
+      <div class="product-rating">★★★★★ <span style="color:#666; font-size:16px;">(55 reviews)</span></div>
+      <p class="product-price"><span class="old-price">Rs 9999.00</span> <span class="new-price">Rs 8499.00</span></p>
+      <div class="product-description">
+        <p>Designed for grand celebrations, the Regal Wedding Sherwani features rich embroidered detail, a sleek silhouette, and premium blended fabric for a royal yet comfortable statement.</p>
+      </div>
+      <h3>Size</h3>
+      <div class="size-options">
+        <div class="size-option">S</div>
+        <div class="size-option active">M</div>
+        <div class="size-option">L</div>
+        <div class="size-option">XL</div>
+        <div class="size-option">XXL</div>
+      </div>
+      <h3>Color</h3>
+      <div class="color-options">
+        <div class="color-option active" style="background-color: #c8a165;"></div>
+        <div class="color-option" style="background-color: #2f4f4f;"></div>
+        <div class="color-option" style="background-color: #000;"></div>
+      </div>
+      <h3>Quantity</h3>
+      <div class="quantity-selector">
+        <button class="quantity-btn">-</button>
+        <input type="text" value="1" class="quantity-input">
+        <button class="quantity-btn">+</button>
+      </div>
+      <button class="add-to-cart"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
+      <button class="add-to-wishlist"><i class="fas fa-heart"></i> Add to Wishlist</button>
+      <div class="product-meta">
+        <span><strong>SKU:</strong> STS-005</span>
+        <span><strong>Categories:</strong> Ethnicwear, Celebration</span>
+        <span><strong>Tags:</strong> sherwani, ethnic, wedding, classic, premium</span>
+      </div>
+    </div>
+    <div class="product-tabs">
+      <div class="tab-buttons">
+        <button class="tab-button active" data-tab="description">Description</button>
+        <button class="tab-button" data-tab="additional">Fabric & Care</button>
+        <button class="tab-button" data-tab="reviews">Reviews (55)</button>
+        <button class="tab-button" data-tab="shipping">Delivery & Policy</button>
+      </div>
+      <div id="description" class="tab-content active">
+        <p>This Regal Sherwani brings timeless elegance to your special day. Crafted with attention to detail, it pairs perfectly with traditional accessories or modern twists.</p>
+        <h3>Features:</h3>
+        <ul class="feature-list">
+          <li>Silk blend with intricate embroidery</li>
+          <li>Mandarin collar design</li>
+          <li>Structured tailored fit</li>
+          <li>Hand-finished detailing</li>
+          <li>Dry clean recommended</li>
+        </ul>
+      </div>
+      <div id="additional" class="tab-content">
+        <table style="width:100%; border-collapse: collapse;">
+          <tr style="border-bottom: 1px solid #ddd;"><th style="padding:10px 0; text-align:left;">Material</th><td style="padding:10px 0;">Silk Blend</td></tr>
+          <tr style="border-bottom: 1px solid #ddd;"><th style="padding:10px 0; text-align:left;">Fit</th><td style="padding:10px 0;">Tailored</td></tr>
+          <tr style="border-bottom: 1px solid #ddd;"><th style="padding:10px 0; text-align:left;">Color Options</th><td style="padding:10px 0;">Gold, Olive, Jet Black</td></tr>
+          <tr style="border-bottom: 1px solid #ddd;"><th style="padding:10px 0; text-align:left;">Care</th><td style="padding:10px 0;">Dry clean only</td></tr>
+          <tr><th style="padding:10px 0; text-align:left;">Made In</th><td style="padding:10px 0;">India</td></tr>
+        </table>
+      </div>
+      <div id="reviews" class="tab-content">
+        <div class="review"><div class="review-header"><span class="review-author">Zain M.</span><span class="review-date">April 18, 2025</span></div><div class="review-rating">★★★★★</div><p>Truly royal feel — wore this for my engagement and got endless compliments!</p></div>
+        <div class="review"><div class="review-header"><span class="review-author">Neha L.</span><span class="review-date">April 14, 2025</span></div><div class="review-rating">★★★★★</div><p>The detailing is superb and the fit was exactly as described. Made the day special!</p></div>
+        <div class="review"><div class="review-header"><span class="review-author">Imran H.</span><span class="review-date">April 11, 2025</span></div><div class="review-rating">★★★★☆</div><p>Luxurious look and feel, delivery was prompt and quality exceeded expectations.</p></div>
+      </div>
+      <div id="shipping" class="tab-content">
+        <h3>Delivery Info</h3>
+        <ul>
+          <li>Standard: 3-5 business days (₹80)</li>
+          <li>Express: 1-2 business days (₹150)</li>
+          <li>Free shipping on orders above ₹2500</li>
+        </ul>
+        <h3>Return & Exchange</h3>
+        <p>Returns accepted within 7 days for unworn, unaltered items with tags. Due to the nature of the garment, size exchanges only.</p>
+      </div>
+    </div>
+    <div class="related-products">
+  <h2 class="related-title">You May Also Like</h2>
+  <div class="related-products-container">
+    <div class="related-product">
+      <img src="https://medias.utsavfashion.com/media/catalog/product/cache/1/small_image/295x/040ec09b1e35df139433887a97daa66f/e/m/embroidered-art-silk-sherwani-in-maroon-v1-mkm1393.jpg"
+           alt="Royal Embroidered Sherwani">
+      <h4>Royal Embroidered Sherwani</h4>
+      <p class="related-price">Rs 8999.00</p>
+    </div>
+    <div class="related-product">
+      <img src="https://medias.utsavfashion.com/media/catalog/product/cache/1/small_image/295x/040ec09b1e35df139433887a97daa66f/e/m/embroidered-cotton-silk-sherwani-in-fawn-v3-mte2616.jpg"
+           alt="Classic Silk Blend Sherwani">
+      <h4>Classic Silk Blend Sherwani</h4>
+      <p class="related-price">Rs 9499.00</p>
+    </div>
+    <div class="related-product">
+      <img src="https://medias.utsavfashion.com/media/catalog/product/cache/1/small_image/295x/040ec09b1e35df139433887a97daa66f/w/o/woven-art-silk-jacquard-jacket-style-sherwani-in-maroon-v1-mux1305.jpg"
+           alt="Contemporary Indo-Western Sherwani">
+      <h4>Contemporary Indo-Western Sherwani</h4>
+      <p class="related-price">Rs 9999.00</p>
+    </div>
+    <div class="related-product">
+      <img src="https://medias.utsavfashion.com/media/catalog/product/cache/1/small_image/295x/040ec09b1e35df139433887a97daa66f/p/l/plain-art-silk-sherwani-in-maroon-v1-mhg1524.jpg"
+           alt="Minimalist Modern Sherwani">
+      <h4>Minimalist Modern Sherwani</h4>
+      <p class="related-price">Rs 8499.00</p>
+    </div>
+  </div>
+</div>
+</div>
+  <script>
+    // Tab functionality
+    document.querySelectorAll('.tab-button').forEach(button => {
+      button.addEventListener('click', () => {
+        const tabId = button.getAttribute('data-tab');
+        document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
+        document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
+        button.classList.add('active');
+        const activeProduct = document.querySelector('.product-container:not([style*="display: none"])');
+        const tabToShow = activeProduct.querySelector(`#${tabId}`) || activeProduct.querySelector(`#${tabId}-linen`);
+        if (tabToShow) tabToShow.classList.add('active');
+      });
+    });
+
+    // Quantity selector
+    document.querySelectorAll('.quantity-btn').forEach(button => {
+      button.addEventListener('click', () => {
+        const input = button.parentElement.querySelector('.quantity-input');
+        let value = parseInt(input.value);
+        if (button.textContent === '+') value++;
+        else if (button.textContent === '-' && value > 1) value--;
+        input.value = value;
+      });
+    });
+
+    // Thumbnail image selection
+    document.querySelectorAll('.thumbnail').forEach(thumbnail => {
+      thumbnail.addEventListener('click', () => {
+        const mainImage = thumbnail.closest('.product-images').querySelector('.main-image');
+        mainImage.src = thumbnail.src;
+        thumbnail.parentElement.querySelectorAll('.thumbnail').forEach(thumb => thumb.classList.remove('active'));
+        thumbnail.classList.add('active');
+      });
+    });
+
+    // Size selection
+    document.querySelectorAll('.size-option').forEach(option => {
+      option.addEventListener('click', () => {
+        option.parentElement.querySelectorAll('.size-option').forEach(opt => opt.classList.remove('active'));
+        option.classList.add('active');
+      });
+    });
+
+    // Color selection
+    document.querySelectorAll('.color-option').forEach(option => {
+      option.addEventListener('click', () => {
+        option.parentElement.querySelectorAll('.color-option').forEach(opt => opt.classList.remove('active'));
+        option.classList.add('active');
+      });
+    });
+
+    // Product navigation
+    document.getElementById('showProduct1').addEventListener('click', () => {
+      document.getElementById('product1').style.display = 'flex';
+      if (document.getElementById('product2')) document.getElementById('product2').style.display = 'none';
+      window.scrollTo(0, document.getElementById('product1').offsetTop - 100);
+    });
+    document.getElementById('showProduct2').addEventListener('click', () => {
+      if (document.getElementById('product2')) {
+        document.getElementById('product1').style.display = 'none';
+        document.getElementById('product2').style.display = 'flex';
+        window.scrollTo(0, document.getElementById('product2').offsetTop - 100);
+      }
+    });
+
+    // Fix tab content IDs for second product (if exists)
+    document.querySelectorAll('#product2 .tab-content').forEach(tab => {
+      if (tab.id) tab.id = tab.id + '-linen';
+    });
+
+    // Add to Cart & Wishlist functionality (stubbed from first file)
+    document.querySelectorAll('.add-to-cart').forEach(button => {
+      button.addEventListener('click', () => {
+        /* cart logic here */
+      });
+    });
+    document.querySelectorAll('.add-to-wishlist').forEach(button => {
+      button.addEventListener('click', () => {
+        /* wishlist logic here */
+      });
+    });
+  </script>
+  <script src="store.js"></script>
+</body>
+</html>

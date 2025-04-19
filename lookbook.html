@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EverVogue Lookbook</title>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="navigation.css"/>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@500&display=swap" rel="stylesheet">
+
+    <style>
+        
+
+        /* Lookbook Hero Section */
+        .lookbook-hero {
+            height: 60vh;
+            background-image: url('https://img.freepik.com/free-photo/attractive-stylish-blonde-woman-walking-street-pink-coat-white-pants-holding-purse-sunglasses-smiling-elegant-summer-spring-autumn-fashion-trend_285396-9261.jpg');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .lookbook-hero::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4);
+        }
+
+        .lookbook-title {
+            position: relative;
+            z-index: 10;
+            color: white;
+            text-align: center;
+        }
+
+        .lookbook-title h1 {
+            font-size: 4rem;
+            font-family: 'Playfair Display', serif;
+            letter-spacing: 5px;
+            margin-bottom: 10px;
+        }
+
+        .lookbook-title p {
+            font-size: 1.5rem;
+            font-weight: 300;
+            letter-spacing: 2px;
+        }
+
+        /* Lookbook Filters */
+        .lookbook-filters {
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+            background-color: #f8f8f8;
+            gap: 15px;
+        }
+
+        .filter-btn {
+            padding: 10px 20px;
+            border: none;
+            background: white;
+            border: 1px solid #ddd;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .filter-btn:hover, .filter-btn.active {
+            background: black;
+            color: white;
+        }
+
+        /* Lookbook Grid */
+        .lookbook-container {
+            padding: 40px;
+        }
+
+        .lookbook-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .lookbook-item {
+            position: relative;
+            overflow: hidden;
+            height: 500px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .lookbook-item:hover {
+            transform: translateY(-10px);
+        }
+
+        .lookbook-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .lookbook-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .lookbook-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 20px;
+            background: linear-gradient(transparent, rgba(0,0,0,0.7));
+            color: white;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .lookbook-item:hover .lookbook-overlay {
+            opacity: 1;
+        }
+
+        .lookbook-overlay h3 {
+            font-family: 'Playfair Display', serif;
+            margin-bottom: 5px;
+        }
+
+        .lookbook-overlay p {
+            font-size: 14px;
+        }
+
+        .shop-now-btn {
+            margin-top: 10px;
+            padding: 5px 15px;
+            background: gold;
+            color: black;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background 0.3s ease;
+        }
+
+        .shop-now-btn:hover {
+            background: white;
+        }
+
+        /* Season Title */
+        .season-title {
+            text-align: center;
+            margin: 40px 0 20px;
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            position: relative;
+        }
+
+        .season-title::after {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 2px;
+            background: gold;
+        }
+
+        /* Video Lookbook Section */
+        .video-lookbook {
+            margin: 60px 0;
+            text-align: center;
+            padding: 0 40px;
+        }
+
+        .video-container {
+            position: relative;
+            overflow: hidden;
+            padding-top: 56.25%; /* 16:9 Aspect Ratio */
+        }
+
+        .play-btn {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80px;
+            height: 80px;
+            background: rgba(0,0,0,0.7);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 2;
+        }
+
+        .play-btn::after {
+            content: "";
+            width: 0;
+            height: 0;
+            border-top: 15px solid transparent;
+            border-bottom: 15px solid transparent;
+            border-left: 25px solid white;
+            margin-left: 5px;
+        }
+
+        .video-container img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Behind The Scenes */
+        .behind-scenes {
+            padding: 60px 40px;
+            background: #f8f8f8;
+        }
+
+        .behind-scenes h2 {
+            text-align: center;
+            font-family: 'Playfair Display', serif;
+            margin-bottom: 40px;
+            font-size: 2.5rem;
+        }
+
+        .scenes-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+        }
+
+        .scene-item {
+            position: relative;
+            height: 300px;
+            overflow: hidden;
+        }
+
+        .scene-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .scene-item:hover img {
+            transform: scale(1.1);
+        }
+
+        /* Newsletter Section */
+        .newsletter {
+            padding: 80px 40px;
+            text-align: center;
+            background-image: url('https://img.freepik.com/free-photo/woman-model-business-suit-wearing-hat_1303-17693.jpg');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            color: white;
+        }
+
+        .newsletter::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+        }
+
+        .newsletter-content {
+            position: relative;
+            z-index: 1;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .newsletter h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .newsletter p {
+            margin-bottom: 30px;
+            font-size: 1.1rem;
+        }
+
+        .newsletter-form {
+            display: flex;
+            justify-content: center;
+        }
+
+        .newsletter-form input {
+            padding: 15px;
+            width: 70%;
+            border: none;
+        }
+
+        .newsletter-form button {
+            padding: 15px 30px;
+            background: gold;
+            color: black;
+            border: none;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .newsletter-form button:hover {
+            background: white;
+        }
+
+        /* Footer */
+        footer {
+            background: black;
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 20px;
+        }
+
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: gold;
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .social-icons a {
+            color: white;
+            font-size: 20px;
+            transition: color 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            color: gold;
+        }
+
+        .copyright {
+            margin-top: 20px;
+            color: #888;
+            font-size: 14px;
+        }
+
+        /* Responsive design */
+        @media (max-width: 992px) {
+            .lookbook-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+            }
+            
+            .lookbook-grid,
+            .scenes-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .lookbook-title h1 {
+                font-size: 2.5rem;
+            }
+            
+            .newsletter-form {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .newsletter-form input,
+            .newsletter-form button {
+                width: 100%;
+            }
+        }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+            <div class="large-letter">E</div><br>
+            <div class="brand-name">EVER</div>
+            <div class="sub-text">VOGUE</div>
+        </div>
+
+        <nav>
+            <ul>
+                <li><a href="cht.html">HOME</a></li>
+                
+                <li><a href="#" class="active">LOOKBOOK</a></li>
+                <li><a href="profile.html">PROFILE</a></li>
+                
+                <li><a href="contact.html">CONTACT US</a></li>
+            </ul>
+        </nav>
+        <div class="icons">
+            <a href="wishlisht.html"><i class="fas fa-heart"></i></a> <!-- Wishlist Icon -->
+            <a href="cart.html"><i class="fas fa-shopping-cart"></i></a> <!-- Cart Icon -->
+        </div>
+    </header>
+
+    <section class="lookbook-hero">
+        <div class="lookbook-title">
+            <h1>LOOKBOOK</h1>
+            <p>Discover the latest trends and styles</p>
+        </div>
+    </section>
+
+    <div class="lookbook-filters">
+        <button class="filter-btn active">All</button>
+        <button class="filter-btn">Summer</button>
+        <button class="filter-btn">Fall</button>
+        <button class="filter-btn">Winter</button>
+        <button class="filter-btn">Spring</button>
+    </div>
+
+    <div class="lookbook-container">
+        <h2 class="season-title">Summer Collection</h2>
+        <div class="lookbook-grid">
+            <div class="lookbook-item">
+                <img src="https://img.freepik.com/free-photo/stylish-blonde-woman-summer-outfit-having-fun-pink-background-wearing-straw-hat-pink-cotton-dress-summer-fashion-trend-elegant-style-sunglasses_285396-7650.jpg" alt="Summer casual outfit">
+                <div class="lookbook-overlay">
+                    <h3>Summer Casual</h3>
+                    <p>Light and airy summer dress perfect for hot days</p>
+                    <a href="summercollection.html" class="shop-now-btn">SHOP NOW</a>
+                </div>
+            </div>
+            <div class="lookbook-item">
+                <img src="https://img.freepik.com/free-photo/portrait-beautiful-young-woman-standing-grey-wall_231208-10760.jpg" alt="Summer street style">
+                <div class="lookbook-overlay">
+                    <h3>Street Style</h3>
+                    <p>Urban chic with comfortable basics</p>
+                    <a href="summercollection.html" class="shop-now-btn">SHOP NOW</a>
+                </div>
+            </div>
+            <div class="lookbook-item">
+                <img src="https://img.freepik.com/free-photo/trendy-urban-street-style-girl-beige-casual-linen-suit-beige-hat-white-sneakers-posing-city-park-fashion-business-woman-outfit-summer-autumn-collection-sunny-warm-day_343629-241.jpg" alt="Business casual">
+                <div class="lookbook-overlay">
+                    <h3>Business Casual</h3>
+                    <p>Professional yet comfortable for those summer office days</p>
+                    <a href="summercollection.html" class="shop-now-btn">SHOP NOW</a>
+                </div>
+            </div>
+        </div>
+        
+        <h2 class="season-title">Fall Collection</h2>
+        <div class="lookbook-grid">
+            <div class="lookbook-item">
+                <img src="https://img.freepik.com/free-photo/stylish-woman-colorful-outfit-accessories-walking-street_285396-9278.jpg" alt="Fall street style">
+                <div class="lookbook-overlay">
+                    <h3>Fall Street Style</h3>
+                    <p>Bold colors and layers for crisp autumn days</p>
+                    <a href="fallcollection.html" class="shop-now-btn">SHOP NOW</a>
+                </div>
+            </div>
+            <div class="lookbook-item">
+                <img src="https://img.freepik.com/free-photo/elegant-woman-beige-coat-yellow-hat-walking-street-fall-fashion-trend-spring-summer-autumn-accessory-elegant-outfit_285396-9035.jpg" alt="Fall elegance">
+                <div class="lookbook-overlay">
+                    <h3>Fall Elegance</h3>
+                    <p>Sophisticated layering with autumn hues</p>
+                    <a href="fallcollection.html" class="shop-now-btn">SHOP NOW</a>
+                </div>
+            </div>
+            <div class="lookbook-item">
+                <img src="https://img.freepik.com/free-photo/woman-denim-coat-orange-dress-hat-walking-street-autumn-fashion-trend_285396-9198.jpg" alt="Fall casual">
+                <div class="lookbook-overlay">
+                    <h3>Fall Casual</h3>
+                    <p>Comfortable yet stylish looks for everyday autumn</p>
+                    <a href="fallcollection.html" class="shop-now-btn">SHOP NOW</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Removed video-lookbook section as per user request -->
+
+    
+
+   
+
+    <script>
+        // JavaScript for filter buttons
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove active class from all buttons
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                
+                // Add active class to clicked button
+                button.classList.add('active');
+                
+                // Filter logic would go here
+                // For a real implementation, you would filter the lookbook items
+            });
+        });
+        
+        // Video play button functionality
+        const playBtn = document.querySelector('.play-btn');
+        const videoContainer = document.querySelector('.video-container');
+        
+        playBtn.addEventListener('click', () => {
+            // In a real implementation, this would play a video
+            alert('Video would play here in a production environment');
+            
+            // Example of how you would replace the image with a video:
+            const video = document.createElement('video');
+            video.src = '"4937474-uhd_4096_2160_25fps.mp4".mp4';
+             video.controls = true;
+             video.autoplay = true;
+             videoContainer.innerHTML = '';
+             videoContainer.appendChild(video);
+        });
+    </script>
+</body>
+</html>

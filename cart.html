@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EverVogue - Shopping Cart</title>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@500&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #f8f8f8;
+        }
+
+        /* Header */
+        header {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background: #000;
+            color: white;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo-container {
+            text-align: center;
+            font-family: 'Playfair Display', serif;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .large-letter {
+            font-size: 3rem;
+            font-weight: bold;
+            color: gold;
+            line-height: 0.8;
+        }
+
+        .brand-name {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1rem;
+            font-weight: 500;
+            letter-spacing: 3px;
+            color: gold;
+            margin-top: -10px;
+        }
+
+        .sub-text {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.4rem;
+            font-weight: 500;
+            letter-spacing: 5px;
+            color: gold;
+            margin-top: -5px;
+        }
+    
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+        
+        nav a:hover {
+            color: gold;
+        }
+
+        /* Icons */
+        .icons {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .icons a {
+            color: white;
+            font-size: 20px;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .icons a:hover {
+            color: gold;
+        }
+        
+        .active-icon {
+            color: gold !important;
+        }
+
+        /* Main content */
+        .page-title {
+            text-align: center;
+            padding: 40px 0;
+            font-family: 'Playfair Display', serif;
+            font-size: 32px;
+        }
+
+        .cart-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px 50px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+
+        .cart-items {
+            flex: 1 1 65%;
+            min-width: 300px;
+        }
+
+        .cart-summary {
+            flex: 1 1 30%;
+            min-width: 300px;
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            align-self: flex-start;
+        }
+
+        .cart-empty {
+            text-align: center;
+            padding: 100px 0;
+            width: 100%;
+        }
+
+        .cart-empty i {
+            font-size: 60px;
+            color: #ddd;
+            margin-bottom: 20px;
+        }
+
+        .cart-empty h3 {
+            font-size: 22px;
+            margin-bottom: 15px;
+            color: #555;
+        }
+
+        .continue-shopping {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 12px 25px;
+            background-color: black;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        .continue-shopping:hover {
+            background-color: gold;
+            color: black;
+        }
+
+        .cart-item {
+            display: flex;
+            background: white;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .cart-item-image {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+        }
+
+        .cart-item-details {
+            padding: 15px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .cart-item-top {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .cart-item-info h3 {
+            margin-bottom: 5px;
+            font-size: 16px;
+        }
+
+        .cart-item-category {
+            color: #777;
+            font-size: 14px;
+        }
+
+        .cart-item-remove {
+            background: none;
+            border: none;
+            color: #777;
+            cursor: pointer;
+            font-size: 18px;
+            transition: color 0.3s;
+        }
+
+        .cart-item-remove:hover {
+            color: red;
+        }
+
+        .cart-item-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .quantity-control {
+            display: flex;
+            align-items: center;
+        }
+
+        .quantity-btn {
+            width: 30px;
+            height: 30px;
+            background: #f1f1f1;
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background 0.3s;
+        }
+
+        .quantity-btn:hover {
+            background: #e1e1e1;
+        }
+
+        .quantity-input {
+            width: 40px;
+            height: 30px;
+            text-align: center;
+            border: 1px solid #f1f1f1;
+            margin: 0 5px;
+        }
+
+        .cart-item-price {
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        .old-price {
+            text-decoration: line-through;
+            color: #999;
+            font-size: 14px;
+            font-weight: normal;
+            margin-right: 5px;
+        }
+
+        /* Cart Summary */
+        .summary-title {
+            font-size: 20px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 12px;
+            font-size: 16px;
+        }
+
+        .summary-total {
+            font-size: 18px;
+            font-weight: bold;
+            border-top: 1px solid #eee;
+            margin-top: 20px;
+            padding-top: 12px;
+        }
+
+        .checkout-btn {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background: gold;
+            color: black;
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+            font-size: 16px;
+            margin-top: 20px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .checkout-btn:hover {
+            background: black;
+            color: white;
+        }
+
+        .promo-code {
+            margin-top: 15px;
+        }
+
+        .promo-input {
+            display: flex;
+            margin-top: 8px;
+        }
+
+        .promo-input input {
+            flex-grow: 1;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px 0 0 5px;
+        }
+
+        .promo-input button {
+            padding: 10px 15px;
+            background: black;
+            color: white;
+            border: none;
+            border-radius: 0 5px 5px 0;
+            cursor: pointer;
+        }
+
+        .promo-input button:hover {
+            background: #333;
+        }
+
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+            }
+            
+            .cart-item {
+                flex-direction: column;
+            }
+            
+            .cart-item-image {
+                width: 100%;
+                height: 200px;
+            }
+        }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+            <div class="large-letter">E</div><br>
+            <div class="brand-name">EVER</div>
+            <div class="sub-text">VOGUE</div>
+        </div>
+
+        <nav>
+            <ul>
+                <li><a href="cht.html">HOME</a></li>
+                
+                <li><a href="lookbook.html">LOOKBOOK</a></li>
+                <li><a href="profile.html">PROFILE</a></li>
+              
+                <li><a href="contact.html">CONTACT US</a></li>
+            </ul>
+        </nav>
+        
+        <div class="icons">
+            <a href="wishlisht.html"><i class="fas fa-heart"></i></a>
+            <a href="cart.html" class="active-icon"><i class="fas fa-shopping-cart"></i></a>
+        </div>
+    </header>
+
+    <main>
+        <h1 class="page-title">Shopping Cart</h1>
+        
+        <div class="cart-container">
+            <!-- If cart has items -->
+            <div class="cart-items">
+                <!-- Cart items will be dynamically rendered here -->
+            </div>
+            
+            <div class="cart-summary">
+                <h2 class="summary-title">Order Summary</h2>
+                <div class="summary-row">
+                    <span>Subtotal</span>
+                    <span id="subtotal-amount">Rs 0.00</span>
+                </div>
+                <div class="summary-row">
+                    <span>Shipping</span>
+                    <span id="shipping-amount">Rs 50.00</span>
+                </div>
+                <div class="summary-row">
+                    <span>Discount</span>
+                    <span id="discount-amount">- Rs 100.00</span>
+                </div>
+                <div class="summary-row summary-total">
+                    <span>Total</span>
+                    <span id="total-amount">Rs 0.00</span>
+                </div>
+                
+                
+<a href="checkout.html" class="checkout-btn">Proceed to Checkout</a>
+            </div>
+            
+             
+            <div class="cart-empty">
+                <i class="fas fa-shopping-cart"></i>
+                <h3>Your cart is empty</h3>
+                <p>Looks like you haven't added anything to your cart yet.</p>
+                <a href="cht.html" class="continue-shopping">Start Shopping</a>
+            </div>
+            
+        </div>
+    </main>
+    <script src="store1.js"></script>
+    <script src="store.js"></script>
+    
+
+
+</body>
+</html>

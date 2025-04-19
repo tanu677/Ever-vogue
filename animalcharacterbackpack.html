@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Animal Character Backpack - EverVogue</title>
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@500&display=swap" rel="stylesheet" />
+  <style>
+    * { 
+      box-sizing: border-box; 
+      margin: 0; 
+      padding: 0; 
+    }
+    
+    body { 
+      font-family: Arial, sans-serif; 
+      background-color: #f8f8f8; 
+    }
+    
+    /* Header */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 20px;
+      background: grey;
+      color: white;
+      z-index: 1000;
+    }
+    
+    .logo-container {
+      text-align: center;
+      font-family: 'Playfair Display', serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    
+    .large-letter {
+      font-size: 2.5rem;
+      font-weight: bold;
+      color: gold;
+      line-height: 0.8;
+    }
+    
+    .brand-name {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 500;
+      letter-spacing: 3px;
+      color: gold;
+    }
+    
+    .sub-text {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 5px;
+      color: gold;
+    }
+    
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 15px;
+    }
+    
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s ease;
+    }
+    
+    nav a:hover {
+      color: gold;
+    }
+    
+    .icons {
+      display: flex;
+      gap: 15px;
+    }
+    
+    .icons a {
+      color: white;
+      font-size: 20px;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    
+    .icons a:hover {
+      color: gold;
+    }
+    
+    /* Product Page Styling */
+    .product-container {
+      margin-top: 100px;
+      padding: 20px;
+      display: flex;
+      flex-wrap: wrap;
+      max-width: 1200px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    
+    .product-images {
+      flex: 1;
+      min-width: 300px;
+      margin-right: 30px;
+    }
+    
+    .main-image {
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+      margin-bottom: 20px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+    
+    .thumbnail-container {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+    
+    .thumbnail {
+      width: 80px;
+      height: 80px;
+      object-fit: cover;
+      border-radius: 5px;
+      cursor: pointer;
+      border: 2px solid transparent;
+      transition: all 0.3s ease;
+    }
+    
+    .thumbnail:hover, .thumbnail.active {
+      border-color: gold;
+    }
+    
+    .product-info {
+      flex: 1;
+      min-width: 300px;
+    }
+    
+    .product-category {
+      font-size: 14px;
+      color: #666;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+    }
+    
+    .product-title {
+      font-size: 28px;
+      margin-bottom: 15px;
+      font-family: 'Montserrat', sans-serif;
+    }
+    
+    .product-rating {
+      font-size: 20px;
+      color: #FFD700;
+      margin-bottom: 15px;
+    }
+    
+    .product-price {
+      font-size: 24px;
+      margin-bottom: 20px;
+      font-weight: bold;
+    }
+    
+    .old-price {
+      text-decoration: line-through;
+      color: red;
+      margin-right: 10px;
+    }
+    
+    .new-price {
+      color: #000;
+    }
+    
+    .product-description {
+      margin-bottom: 20px;
+      line-height: 1.6;
+    }
+    
+    .product-info h3 {
+      margin: 20px 0 10px;
+      font-size: 18px;
+    }
+    
+    .size-options, .color-options {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+    
+    .size-option, .color-option {
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid #ddd;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    .size-option:hover, .size-option.active {
+      background-color: black;
+      color: white;
+    }
+    
+    .color-option {
+      border-radius: 50%;
+    }
+    
+    .color-option:hover, .color-option.active {
+      transform: scale(1.1);
+    }
+    
+    .quantity-selector {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+    
+    .quantity-btn {
+      width: 40px;
+      height: 40px;
+      background: white;
+      border: 1px solid #ddd;
+      font-size: 18px;
+      cursor: pointer;
+    }
+    
+    .quantity-input {
+      width: 60px;
+      height: 40px;
+      text-align: center;
+      border: 1px solid #ddd;
+      margin: 0 5px;
+    }
+    
+    .add-to-cart {
+      background: black;
+      color: white;
+      border: none;
+      padding: 15px 30px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      margin-right: 10px;
+      transition: all 0.3s ease;
+    }
+    
+    .add-to-cart:hover {
+      background: gold;
+      color: black;
+    }
+    
+    .add-to-wishlist {
+      background: white;
+      border: 1px solid #ddd;
+      padding: 15px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    .add-to-wishlist:hover {
+      background: #f0f0f0;
+    }
+    
+    .product-meta {
+      margin-top: 30px;
+      padding-top: 20px;
+      border-top: 1px solid #ddd;
+      font-size: 14px;
+      color: #666;
+    }
+    
+    .product-meta span {
+      display: block;
+      margin-bottom: 5px;
+    }
+    
+    /* Tabs for additional product info */
+    .product-tabs {
+      margin-top: 40px;
+      width: 100%;
+    }
+    
+    .tab-buttons {
+      display: flex;
+      border-bottom: 1px solid #ddd;
+    }
+    
+    .tab-button {
+      padding: 15px 25px;
+      background: none;
+      border: none;
+      border-bottom: 3px solid transparent;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    
+    .tab-button.active {
+      border-bottom-color: gold;
+    }
+    
+    .tab-content {
+      padding: 20px 0;
+      display: none;
+    }
+    
+    .tab-content.active {
+      display: block;
+    }
+    
+    /* Related products */
+    .related-products {
+      margin-top: 60px;
+      width: 100%;
+    }
+    
+    .related-title {
+      font-size: 24px;
+      text-align: center;
+      margin-bottom: 30px;
+      position: relative;
+    }
+    
+    .related-title:after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 3px;
+      background-color: gold;
+    }
+    
+    .related-products-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 20px;
+    }
+    
+    .related-product {
+      background: white;
+      padding: 15px;
+      text-align: center;
+      border-radius: 8px;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+    }
+    
+    .related-product img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 5px;
+      margin-bottom: 10px;
+    }
+    
+    .related-product h4 {
+      font-size: 16px;
+      margin-bottom: 8px;
+    }
+    
+    .related-price {
+      font-weight: bold;
+      font-size: 14px;
+    }
+  </style>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js" crossorigin="anonymous"></script>
+<body>
+  <header>
+    <div class="logo-container">
+      <div class="large-letter">E</div>
+      <div class="brand-name">EVER</div>
+      <div class="sub-text">VOGUE</div>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="#">HOME</a></li>
+        <li><a href="#">SHOP</a></li>
+        <li><a href="#">LOOKBOOK</a></li>
+        <li><a href="#">PROFILE</a></li>
+        <li><a href="#">ABOUT US</a></li>
+        <li><a href="#">CONTACT US</a></li>
+      </ul>
+    </nav>
+    <div class="icons">
+      <a href="wishlisht.html"><i class="fas fa-heart"></i></a>
+      <a href="cart.html"><i class="fas fa-shopping-cart"></i></a>
+    </div>
+  </header>
+  <div class="back-to-collection">
+    <a href="kidscollection.html">
+      <i class="fas fa-arrow-left"></i> Back to Kids Accessories
+    </a>
+  </div>
+  <div id="product1" class="product-container">
+    <div class="product-images">
+      <img src="https://zoey.in/cdn/shop/files/zoey-bonsai-backpack-happy-animal-tribe-bonsai-school-backpack-toddler-bag-46652979216687.jpg?v=1726285305&width=1500" alt="Animal Character Backpack" class="main-image" />
+      <div class="thumbnail-container">
+        <img src="https://zoey.in/cdn/shop/files/zoey-bonsai-backpack-happy-animal-tribe-bonsai-school-backpack-toddler-bag-46652979216687.jpg?v=1726285305&width=1500" alt="Animal Character Backpack Front View" class="thumbnail active" />
+        <img src="https://zoey.in/cdn/shop/files/zoey-bonsai-backpack-2-4-years-happy-animal-tribe-bonsai-school-backpack-toddler-bag-46652979249455.jpg?v=1726285294&width=1214" alt="Animal Character Backpack Side View" class="thumbnail" />
+        <img src="https://zoey.in/cdn/shop/files/zoey-bonsai-backpack-happy-animal-tribe-bonsai-school-backpack-toddler-bag-46652979085615.jpg?v=1726317122&width=1214" alt="Animal Character Backpack Back View" class="thumbnail" />
+        <img src="https://zoey.in/cdn/shop/files/zoey-bonsai-backpack-happy-animal-tribe-bonsai-school-backpack-toddler-bag-46652979282223.jpg?v=1726317120&width=1214" alt="Animal Character Backpack Detail" class="thumbnail" />
+      </div>
+    </div>
+    <div class="product-info">
+      <p class="product-category">Kids Accessories</p>
+      <span class="product-badge new-badge">New!</span>
+      <h1 class="product-title">Animal Character Backpack</h1>
+      <div class="product-rating">★★★★☆<span style="color:#666; font-size:16px;">(12 reviews)</span></div>
+      <p class="product-price"><span class="old-price">Rs 1500.00</span> <span class="new-price">Rs 1100.00</span></p>
+      <div class="product-description">
+        <p>This Animal Character Backpack is perfect for your little one. Made with durable materials and featuring a fun animal design, it is both practical and stylish. Ideal for school, outings, and travel, it offers ample storage and comfort with padded straps.</p>
+      </div>
+      <h3>Size</h3>
+      <div class="size-options">
+        <div class="size-option active">One Size</div>
+      </div>
+      <h3>Color</h3>
+      <div class="color-options">
+        <div class="color-option active" style="background-color: #ffcc00; border: 1px solid #ddd;">Yellow</div>
+        <div class="color-option" style="background-color: #663399;">Purple</div>
+        <div class="color-option" style="background-color: #ff6666;">Red</div>
+      </div>
+      <h3>Quantity</h3>
+      <div class="quantity-selector">
+        <button class="quantity-btn">-</button>
+        <input type="text" value="1" class="quantity-input" />
+        <button class="quantity-btn">+</button>
+      </div>
+      <button class="add-to-cart" data-id="201"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
+      <button class="add-to-wishlist" data-id="201"><i class="fas fa-heart"></i> Add to Wishlist</button>
+      <div class="product-meta">
+        <span><strong>SKU:</strong> KIDS-ACC-001</span>
+        <span><strong>Categories:</strong> Kids Accessories</span>
+        <span><strong>Tags:</strong> backpack, animal, kids, accessories</span>
+      </div>
+    </div>
+    <div class="product-tabs">
+      <div class="tab-buttons">
+        <button class="tab-button active" data-tab="description">Description</button>
+        <button class="tab-button" data-tab="additional">Additional Information</button>
+        <button class="tab-button" data-tab="reviews">Reviews (12)</button>
+        <button class="tab-button" data-tab="shipping">Shipping & Returns</button>
+      </div>
+      <div id="description" class="tab-content active">
+        <p>This Animal Character Backpack is perfect for your little one. Made with durable materials and featuring a fun animal design, it is both practical and stylish. Ideal for school, outings, and travel, it offers ample storage and comfort with padded straps.</p>
+        <h3>Features:</h3>
+        <ul class="feature-list">
+          <li>Durable and lightweight</li>
+          <li>Fun animal character design</li>
+          <li>Padded adjustable straps</li>
+          <li>Multiple compartments for storage</li>
+          <li>Easy to clean material</li>
+        </ul>
+      </div>
+      <div id="additional" class="tab-content">
+        <table style="width:100%; border-collapse: collapse;">
+          <tr style="border-bottom: 1px solid #ddd;">
+            <th style="text-align: left; padding: 10px 0;">Material</th>
+            <td style="padding: 10px 0;">Polyester</td>
+          </tr>
+          <tr style="border-bottom: 1px solid #ddd;">
+            <th style="text-align: left; padding: 10px 0;">Dimensions</th>
+            <td style="padding: 10px 0;">30cm x 20cm x 10cm</td>
+          </tr>
+          <tr style="border-bottom: 1px solid #ddd;">
+            <th style="text-align: left; padding: 10px 0;">Care Instructions</th>
+            <td style="padding: 10px 0;">Wipe clean with a damp cloth</td>
+          </tr>
+          <tr style="border-bottom: 1px solid #ddd;">
+            <th style="text-align: left; padding: 10px 0;">Country of Origin</th>
+            <td style="padding: 10px 0;">China</td>
+          </tr>
+        </table>
+      </div>
+      <div id="reviews" class="tab-content">
+        <div class="review">
+          <div class="review-header">
+            <span class="review-author">Ravi K.</span>
+            <span class="review-date">April 10, 2025</span>
+          </div>
+          <div class="review-rating">★★★★☆</div>
+          <p>My son loves this backpack! It's spacious and comfortable for daily use.</p>
+        </div>
+        <div class="review">
+          <div class="review-header">
+            <span class="review-author">Anita S.</span>
+            <span class="review-date">April 5, 2025</span>
+          </div>
+          <div class="review-rating">★★★★★</div>
+          <p>Great quality and adorable design. Highly recommend for kids.</p>
+        </div>
+      </div>
+      <div id="shipping" class="tab-content">
+        <h3>Shipping Information</h3>
+        <p>We ship all over India via premium courier services.</p>
+        <ul>
+          <li>Standard Shipping: 3-5 business days (₹70)</li>
+          <li>Express Shipping: 1-2 business days (₹150)</li>
+          <li>Free shipping on orders above ₹2500</li>
+        </ul>
+        <h3>Return Policy</h3>
+        <p>We accept returns within 15 days of delivery. Items must be unworn, unwashed, and with original tags attached.</p>
+        <p>To initiate a return:</p>
+        <ol>
+          <li>Login to your account and go to "My Orders"</li>
+          <li>Select the order and items you wish to return</li>
+          <li>Choose reason for return and submit request</li>
+          <li>Package your item securely with original packaging</li>
+          <li>Use the return shipping label provided and drop at nearest courier point</li>
+        </ol>
+        <p>Refunds will be processed within 7-10 business days after the returned item is received and inspected.</p>
+      </div>
+    </div>
+  </div>
+  <script>
+    // Tab functionality
+    document.querySelectorAll('.tab-button').forEach(button => {
+      button.addEventListener('click', () => {
+        const tabId = button.getAttribute('data-tab');
+        document.querySelectorAll('.tab-content').forEach(tab => {
+          tab.classList.remove('active');
+        });
+        document.querySelectorAll('.tab-button').forEach(btn => {
+          btn.classList.remove('active');
+        });
+        button.classList.add('active');
+        const activeProductContainer = document.querySelector('.product-container:not([style*="display: none"])');
+        const tabToShow = activeProductContainer.querySelector(`#${tabId}`) || activeProductContainer.querySelector(`#${tabId}-linen`);
+        if (tabToShow) {
+          tabToShow.classList.add('active');
+        }
+      });
+    });
+    // Quantity selector
+    document.querySelectorAll('.quantity-btn').forEach(button => {
+      button.addEventListener('click', () => {
+        const input = button.parentElement.querySelector('.quantity-input');
+        let value = parseInt(input.value);
+        if (button.textContent === '+') {
+          value++;
+        } else if (button.textContent === '-' && value > 1) {
+          value--;
+        }
+        input.value = value;
+      });
+    });
+    // Thumbnail image selection
+    document.querySelectorAll('.thumbnail').forEach(thumbnail => {
+      thumbnail.addEventListener('click', () => {
+        const mainImage = thumbnail.parentElement.parentElement.querySelector('.main-image');
+        mainImage.src = thumbnail.src;
+        thumbnail.parentElement.querySelectorAll('.thumbnail').forEach(thumb => {
+          thumb.classList.remove('active');
+        });
+        thumbnail.classList.add('active');
+      });
+    });
+    // Size selection
+    document.querySelectorAll('.size-option').forEach(option => {
+      option.addEventListener('click', () => {
+        option.parentElement.querySelectorAll('.size-option').forEach(opt => {
+          opt.classList.remove('active');
+        });
+        option.classList.add('active');
+      });
+    });
+    // Color selection
+    document.querySelectorAll('.color-option').forEach(option => {
+      option.addEventListener('click', () => {
+        option.parentElement.querySelectorAll('.color-option').forEach(opt => {
+          opt.classList.remove('active');
+        });
+        option.classList.add('active');
+      });
+    });
+    // Add to Cart
+    document.querySelectorAll('.add-to-cart').forEach(button => {
+      button.addEventListener('click', () => {
+        const productSection = button.closest('.product-container');
+        const id = button.dataset.id;
+        const name = productSection.querySelector('.product-title').textContent;
+        const category = productSection.querySelector('.product-category').textContent;
+        const price = parseFloat(productSection.querySelector('.new-price').textContent.replace('Rs', '').trim());
+        const oldPrice = parseFloat(productSection.querySelector('.old-price').textContent.replace('Rs', '').trim());
+        const image = productSection.querySelector('.main-image').src;
+        const quantity = parseInt(productSection.querySelector('.quantity-input').value);
+        const selectedSize = productSection.querySelector('.size-option.active')?.textContent || 'Default';
+        const selectedColor = productSection.querySelector('.color-option.active')?.textContent || 'Default';
+        const product = {
+          id,
+          name,
+          category,
+          price,
+          oldPrice,
+          image,
+          quantity,
+          size: selectedSize,
+          color: selectedColor
+        };
+        addToCart(product);
+      });
+    });
+    // Add to Wishlist
+    document.querySelectorAll('.add-to-wishlist').forEach(button => {
+      button.addEventListener('click', () => {
+        const productSection = button.closest('.product-container');
+        const id = button.dataset.id;
+        const name = productSection.querySelector('.product-title').textContent;
+        const category = productSection.querySelector('.product-category').textContent;
+        const price = parseFloat(productSection.querySelector('.new-price').textContent.replace('Rs', '').trim());
+        const oldPrice = parseFloat(productSection.querySelector('.old-price').textContent.replace('Rs', '').trim());
+        const image = productSection.querySelector('.main-image').src;
+        const selectedSize = productSection.querySelector('.size-option.active')?.textContent || 'Default';
+        const selectedColor = productSection.querySelector('.color-option.active')?.textContent || 'Default';
+        const product = {
+          id,
+          name,
+          category,
+          price,
+          oldPrice,
+          image,
+          size: selectedSize,
+          color: selectedColor
+        };
+        addToWishlist(product);
+      });
+    });
+  </script>
+  <script src="store.js"></script>
+</body>
+</html>
