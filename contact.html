@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Contact Us - EverVogue</title>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet" />
+        <link rel="stylesheet" href="navigation.css" />
+        <style>
+            body {
+                font-family: 'Montserrat', sans-serif;
+                background-color: #f8f8f8;
+                margin: 0;
+                padding: 0;
+                color: #333;
+            }
+            main {
+                max-width: 600px;
+                margin: 40px auto;
+                background: white;
+                padding: 30px;
+                border-radius: 10px;
+                box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            }
+            h1 {
+                text-align: center;
+                margin-bottom: 30px;
+                font-weight: 600;
+                color: #000;
+            }
+            .contact-info {
+                font-family: 'Montserrat', sans-serif;
+                max-width: 600px;
+                margin: 20px auto;
+                background: white;
+                padding: 30px;
+                border-radius: 10px;
+                box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+                color: #333;
+            }
+            .contact-info h2 {
+                margin-top: 0;
+            }
+            .contact-info ul {
+                list-style: none;
+                padding: 0;
+                font-size: 1rem;
+            }
+            .contact-info ul li {
+                margin-bottom: 10px;
+            }
+            .contact-info a {
+                color: gold;
+                text-decoration: none;
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+            <div class="logo-container">
+                <div class="large-letter">E</div><br>
+                <div class="brand-name">EVER</div>
+                <div class="sub-text">VOGUE</div>
+            </div>
+
+            <nav>
+                <ul>
+                    <li><a href="index.html">HOME</a></li>
+                    
+                    <li><a href="lookbook.html">LOOKBOOK</a></li>
+                    <li><a href="profile.html">PROFILE</a></li>
+                    
+                    <li><a href="contact.html" class="active-icon">CONTACT US</a></li>
+                </ul>
+            </nav>
+            
+            <div class="icons">
+                <a href="wishlisht.html"><i class="fas fa-heart"></i></a>
+                <a href="cart.html"><i class="fas fa-shopping-cart"></i></a>
+            </div>
+        </header>
+        <main>
+            <h1>Contact Us</h1>
+
+            <div class="contact-info">
+                <h2>Customer Support</h2>
+                <p>If you have any questions or need assistance, please contact our customer support team:</p>
+                <ul>
+                    <li><strong>Phone:</strong> +983 456 7890</li>
+                    <li><strong>Email:</strong> <a href="mailto:support@evervogue.com">support@evervogue.com</a></li>
+                    <li><strong>Address:</strong> 123 EverVogue Street, Fashion City, Country</li>
+                </ul>
+            </div>
+
+            <!-- Insert chatbot here in the middle of the page -->
+            <div class="chat-container" style="max-width: 600px; margin: 20px auto;">
+                <div class="chat-button" id="chat-button" aria-label="Open chat" style="display:none;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                    </svg>
+                </div>
+                <div class="chat-window active" id="chat-window" role="region" aria-live="polite" aria-label="Chat messages" style="width: 100%; height: 400px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
+                    <div class="chat-header" style="background-color: gold; color: black; padding: 10px; font-weight: 600;">
+                        <h3>EverVogue Assistant</h3>
+                        <span class="close-chat" id="close-chat" role="button" aria-label="Close chat" style="cursor: default; font-size: 20px; font-weight: 700;">×</span>
+                    </div>
+                    <div class="chat-messages" id="chat-messages" style="padding: 10px; overflow-y: auto; background-color: #f8f8f8; height: calc(100% - 90px);">
+                    </div>
+                    <div class="chat-input" style="display: flex; border-top: 1px solid #ddd;">
+                        <input type="text" id="user-input" placeholder="Type your message..." aria-label="Chat input" style="flex: 1; border: none; padding: 10px; font-size: 1rem; font-family: 'Montserrat', sans-serif;">
+                        <button id="send-button" aria-label="Send message" style="background-color: gold; border: none; padding: 0 15px; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background-color 0.3s ease;">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="22" y1="2" x2="11" y2="13"></line>
+                                <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <script>
+            // Chatbot functionality
+            document.addEventListener('DOMContentLoaded', function() {
+                const chatButton = document.getElementById('chat-button');
+                const chatWindow = document.getElementById('chat-window');
+                const closeChat = document.getElementById('close-chat');
+                const chatMessages = document.getElementById('chat-messages');
+                const userInput = document.getElementById('user-input');
+                const sendButton = document.getElementById('send-button');
+
+                // Open chat window
+                chatButton.addEventListener('click', function() {
+                    chatWindow.classList.add('active');
+                });
+
+                // Close chat window
+                closeChat.addEventListener('click', function() {
+                    chatWindow.classList.remove('active');
+                });
+
+                // Send message function
+                function sendMessage() {
+                    const message = userInput.value.trim();
+                    if (message === '') return;
+
+                    // Add user message to chat
+                    addMessage(message, 'user');
+                    
+                    // Clear input
+                    userInput.value = '';
+                    
+                    // Simulate bot response
+                    setTimeout(() => {
+                        const botResponse = getBotResponse(message);
+                        addMessage(botResponse, 'bot');
+                    }, 500);
+                }
+
+                // Add message to chat
+                function addMessage(text, sender) {
+                    const messageDiv = document.createElement('div');
+                    messageDiv.classList.add('message');
+                    messageDiv.classList.add(sender === 'user' ? 'user-message' : 'bot-message');
+                    messageDiv.textContent = text;
+                    chatMessages.appendChild(messageDiv);
+                    
+                    // Scroll to bottom
+                    chatMessages.scrollTop = chatMessages.scrollHeight;
+                }
+
+                // Simple bot responses
+                function getBotResponse(message) {
+                    const lowerMessage = message.toLowerCase();
+                    
+                    if (lowerMessage.includes('hello') || lowerMessage.includes('hi') || lowerMessage.includes('hey')) {
+                        return "Hello! How can I assist you with your fashion and shopping needs today?";
+                    } else if (lowerMessage.includes('price') || lowerMessage.includes('cost') || lowerMessage.includes('budget')) {
+                        return "Our products range from affordable to premium. Could you specify the category or product you're interested in?";
+                    } else if (lowerMessage.includes('collection') || lowerMessage.includes('product') || lowerMessage.includes('item')) {
+                        return "We have a wide range of collections including summer wear, formal suits, casuals, and accessories. What are you looking for?";
+                    } else if (lowerMessage.includes('order') || lowerMessage.includes('buy') || lowerMessage.includes('purchase')) {
+                        return "To place an order, please add items to your cart and proceed to checkout. You can also create an account for faster checkout.";
+                    } else if (lowerMessage.includes('contact') || lowerMessage.includes('support') || lowerMessage.includes('help')) {
+                        return "You can reach our support team at +123 456 7890 or email us at support@evervogue.com. We're here to help!";
+                    } else if (lowerMessage.includes('thank') || lowerMessage.includes('thanks')) {
+                        return "You're welcome! Let me know if you need any more assistance.";
+                    } else if (lowerMessage.includes('bye') || lowerMessage.includes('goodbye')) {
+                        return "Goodbye! Happy shopping at EverVogue!";
+                    } else {
+                        return "I'm here to help with your fashion and shopping questions. Could you please rephrase or ask about our products, orders, or support?";
+                    }
+                }
+
+                // Send message on button click
+                sendButton.addEventListener('click', sendMessage);
+                
+                // Send message on Enter key
+                userInput.addEventListener('keypress', function(e) {
+                    if (e.key === 'Enter') {
+                        sendMessage();
+                    }
+                });
+            });
+        </script>
+    </body>
+</html>

@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EverVogue - Checkout</title>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@500&display=swap" rel="stylesheet">
+    <!-- Use the same CSS as in cart.html but add checkout specific styles -->
+    <style>
+        /* Copy your existing styles from cart.html */
+        /* Add checkout specific styles */
+        /* Header */
+header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background: #000;
+    color: white;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.logo-container {
+    text-align: center;
+    font-family: 'Playfair Display', serif;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.large-letter {
+    font-size: 3rem;
+    font-weight: bold;
+    color: gold;
+    line-height: 0.8;
+}
+
+.brand-name {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1rem;
+    font-weight: 500;
+    letter-spacing: 3px;
+    color: gold;
+    margin-top: -10px;
+}
+
+.sub-text {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.4rem;
+    font-weight: 500;
+    letter-spacing: 5px;
+    color: gold;
+    margin-top: -5px;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+nav a:hover {
+    color: gold;
+}
+
+/* Icons */
+.icons {
+    display: flex;
+    gap: 15px;
+}
+
+.icons a {
+    color: white;
+    font-size: 20px;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.icons a:hover {
+    color: gold;
+}
+
+.active-icon {
+    color: gold !important;
+}
+
+/* Media query for responsive navigation */
+@media (max-width: 768px) {
+    nav ul {
+        display: none;
+    }
+}
+        .checkout-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px 50px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+        
+        .checkout-form {
+            flex: 1 1 65%;
+            min-width: 300px;
+        }
+        
+        .form-section {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        
+        .form-title {
+            margin-bottom: 20px;
+            font-family: 'Playfair Display', serif;
+            font-size: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .form-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+        
+        .form-group {
+            flex: 1 1 calc(50% - 15px);
+            min-width: 250px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        
+        .payment-methods {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .payment-method {
+            flex: 1 1 calc(33% - 15px);
+            min-width: 120px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 15px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .payment-method:hover {
+            border-color: gold;
+        }
+        
+        .payment-method.active {
+            border-color: gold;
+            background-color: rgba(255, 215, 0, 0.1);
+        }
+        
+        .payment-method i {
+            font-size: 24px;
+            margin-bottom: 8px;
+        }
+        
+        .place-order-btn {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            background: gold;
+            color: black;
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+            font-size: 18px;
+            margin-top: 20px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        
+        .place-order-btn:hover {
+            background: black;
+            color: white;
+        }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <!-- Copy your header from cart.html -->
+    <header>
+        <div class="logo-container">
+            <div class="large-letter">E</div><br>
+            <div class="brand-name">EVER</div>
+            <div class="sub-text">VOGUE</div>
+        </div>
+
+        <nav>
+            <ul>
+                <li><a href="index.html">HOME</a></li>
+
+                <li><a href="lookbook.html">LOOKBOOK</a></li>
+                <li><a href="profile.html">PROFILE</a></li>
+                
+                <li><a href="contact.html">CONTACT US</a></li>
+            </ul>
+        </nav>
+        
+        <div class="icons">
+            <a href="wishlisht.html"><i class="fas fa-heart"></i></a>
+            <a href="cart.html"><i class="fas fa-shopping-cart"></i></a>
+        </div>
+    </header>
+
+    <main>
+        <h1 class="page-title">Checkout</h1>
+        
+        <div class="checkout-container">
+            <div class="checkout-form">
+                <div class="form-section">
+                    <h2 class="form-title">Shipping Information</h2>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="firstName">First Name</label>
+                            <input type="text" id="firstName" placeholder="Enter your first name">
+                        </div>
+                        <div class="form-group">
+                            <label for="lastName">Last Name</label>
+                            <input type="text" id="lastName" placeholder="Enter your last name">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" placeholder="Enter your email">
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone</label>
+                            <input type="tel" id="phone" placeholder="Enter your phone number">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="address">Address</label>
+                            <input type="text" id="address" placeholder="Enter your address">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="city">City</label>
+                            <input type="text" id="city" placeholder="Enter your city">
+                        </div>
+                        <div class="form-group">
+                            <label for="state">State</label>
+                            <input type="text" id="state" placeholder="Enter your state">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="zipcode">Zip Code</label>
+                            <input type="text" id="zipcode" placeholder="Enter zip code">
+                        </div>
+                        <div class="form-group">
+                            <label for="country">Country</label>
+                            <select id="country">
+                                <option value="">Select Country</option>
+                                <option value="india">India</option>
+                                <option value="usa">United States</option>
+                                <option value="uk">United Kingdom</option>
+                                <option value="canada">Canada</option>
+                                <option value="australia">Australia</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-section">
+                    <h2 class="form-title">Payment Method</h2>
+                    <div class="payment-methods">
+                        <div class="payment-method active">
+                            <i class="fas fa-credit-card"></i>
+                            <div>Credit Card</div>
+                        </div>
+                        <div class="payment-method">
+                            <i class="fab fa-paypal"></i>
+                            <div>PayPal</div>
+                        </div>
+                        <div class="payment-method">
+                            <i class="fas fa-money-bill-wave"></i>
+                            <div>Cash on Delivery</div>
+                        </div>
+                    </div>
+                    
+                    <div id="credit-card-form" style="margin-top: 20px;">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="cardName">Name on Card</label>
+                                <input type="text" id="cardName" placeholder="Enter name as on card">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="cardNumber">Card Number</label>
+                                <input type="text" id="cardNumber" placeholder="Enter card number">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="expiry">Expiry Date</label>
+                                <input type="text" id="expiry" placeholder="MM/YY">
+                            </div>
+                            <div class="form-group">
+                                <label for="cvv">CVV</label>
+                                <input type="text" id="cvv" placeholder="Enter CVV">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <button class="place-order-btn">Place Order</button>
+            </div>
+            
+            <div class="cart-summary">
+                <h2 class="summary-title">Order Summary</h2>
+            <div class="summary-row">
+                <span>Subtotal (<span id="item-count">0</span> items)</span>
+                <span id="subtotal-amount">Rs 0.00</span>
+            </div>
+            <div class="summary-row">
+                <span>Shipping</span>
+                <span id="shipping-amount">Rs 0.00</span>
+            </div>
+            <div class="summary-row">
+                <span>Discount</span>
+                <span id="discount-amount">- Rs 0.00</span>
+            </div>
+            <div class="summary-row summary-total">
+                <span>Total</span>
+                <span id="total-amount">Rs 0.00</span>
+            </div>
+            </div>
+        </div>
+    </main>
+    
+    <script src="store1.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Calculate and update order summary from localStorage cart
+            function updateOrderSummary() {
+                const cart = JSON.parse(localStorage.getItem('cart')) || [];
+                let subtotal = 0;
+                let itemCount = 0;
+                cart.forEach(item => {
+                    subtotal += item.price * item.quantity;
+                    itemCount += item.quantity;
+                });
+                const shipping = subtotal > 0 ? 100 : 0;
+                const discount = subtotal > 500 ? 500 : 0;
+                const total = subtotal + shipping - discount;
+                
+                document.getElementById('item-count').textContent = itemCount;
+                document.getElementById('subtotal-amount').textContent = `Rs ${subtotal.toFixed(2)}`;
+                document.getElementById('shipping-amount').textContent = `Rs ${shipping.toFixed(2)}`;
+                document.getElementById('discount-amount').textContent = `- Rs ${discount.toFixed(2)}`;
+                document.getElementById('total-amount').textContent = `Rs ${total.toFixed(2)}`;
+            }
+            
+            updateOrderSummary();
+            
+            // Payment method selection
+            const paymentMethods = document.querySelectorAll('.payment-method');
+            
+            paymentMethods.forEach(method => {
+                method.addEventListener('click', function() {
+                    // Remove active class from all methods
+                    paymentMethods.forEach(m => m.classList.remove('active'));
+                    // Add active class to clicked method
+                    this.classList.add('active');
+                    
+                    // Show/hide credit card form based on selection
+                    const creditCardForm = document.getElementById('credit-card-form');
+                    if (this.textContent.trim() === 'Credit Card') {
+                        creditCardForm.style.display = 'block';
+                    } else {
+                        creditCardForm.style.display = 'none';
+                    }
+                });
+            });
+            
+            // Place order button
+            const placeOrderBtn = document.querySelector('.place-order-btn');
+            
+            if (placeOrderBtn) {
+                placeOrderBtn.addEventListener('click', function() {
+                    // Validate form
+                    const firstName = document.getElementById('firstName').value;
+                    const lastName = document.getElementById('lastName').value;
+                    const email = document.getElementById('email').value;
+                    
+                    if (!firstName || !lastName || !email) {
+                        alert('Please fill in all required fields');
+                        return;
+                    }
+                    
+                    // Simulate order placement
+                    alert('Order placed successfully!');
+                    // Redirect to a thank you page
+                    window.location.href = 'thankyou.html';
+                });
+            }
+        });
+    </script>
+</body>
+</html>

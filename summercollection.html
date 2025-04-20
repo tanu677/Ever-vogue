@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Summer Collection - EverVogue</title>
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@500&display=swap" rel="stylesheet" />
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f8f8f8;
+    }
+
+    /* Header */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 20px;
+      background: black;
+      color: white;
+      z-index: 1000;
+    }
+
+    .logo-container {
+      text-align: center;
+      font-family: 'Playfair Display', serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .large-letter {
+      font-size: 2.5rem;
+      font-weight: bold;
+      color: gold;
+      line-height: 0.8;
+    }
+
+    .brand-name {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 500;
+      letter-spacing: 3px;
+      color: gold;
+    }
+
+    .sub-text {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 5px;
+      color: gold;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 15px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s ease;
+    }
+
+    nav a:hover {
+      color: gold;
+    }
+
+    .icons {
+      display: flex;
+      gap: 15px;
+    }
+
+    .icons a {
+      color: white;
+      font-size: 20px;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .icons a:hover {
+      color: gold;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      width: 230px;
+      background: white;
+      padding: 20px;
+      height: 100vh;
+      position: fixed;
+      left: 0;
+      top: 80px;
+      box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Main Content */
+    .main-container {
+      margin-top: 80px;
+      margin-left: 230px;
+      padding: 20px;
+    }
+
+    .page-title {
+      text-align: center;
+      margin: 20px 0 40px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 32px;
+      font-weight: bold;
+      position: relative;
+    }
+
+    .page-title:after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 3px;
+      background-color: gold;
+    }
+
+    /* Products Styling */
+    .products-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 25px;
+      justify-content: center;
+    }
+
+    .product-card {
+      background: #fff;
+      padding: 15px;
+      border-radius: 10px;
+      text-align: center;
+      position: relative;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease-in-out;
+      cursor: pointer;
+    }
+
+    .product-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .product-card img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    .category {
+      font-size: 14px;
+      color: #666;
+      margin-top: 10px;
+    }
+
+    h3 {
+      font-size: 18px;
+      margin: 10px 0;
+      font-weight: 600;
+    }
+
+    .price {
+      font-size: 16px;
+      font-weight: bold;
+    }
+
+    .old-price {
+      text-decoration: line-through;
+      color: red;
+      margin-right: 5px;
+    }
+
+    .new-price {
+      color: #000;
+    }
+
+    .sale-badge {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: #fa6400;
+      color: white;
+      padding: 5px 10px;
+      font-size: 12px;
+      border-radius: 50px;
+      font-weight: bold;
+    }
+
+    .new-badge {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: #32cd32;
+      color: white;
+      padding: 5px 10px;
+      font-size: 12px;
+      border-radius: 50px;
+      font-weight: bold;
+    }
+
+    /* Star Rating Styling */
+    .rating {
+      font-size: 18px;
+      color: #FFD700; /* Gold color for stars */
+      margin: 5px 0 10px;
+    }
+
+    /* Quick-view button */
+    .quick-view-btn {
+      background-color: black;
+      color: white;
+      border: none;
+      padding: 8px 15px;
+      margin-top: 10px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background-color 0.3s;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .quick-view-btn:hover {
+      background-color: gold;
+      color: black;
+    }
+  </style>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js" crossorigin="anonymous"></script>
+</head>
+<body>
+  <header>
+    <div class="logo-container">
+      <div class="large-letter">E</div>
+      <div class="brand-name">EVER</div>
+      <div class="sub-text">VOGUE</div>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="index.html">HOME</a></li>
+        <li><a href="lookbook.html">LOOKBOOK</a></li>
+        <li><a href="profile.html">PROFILE</a></li>
+        <li><a href="contact.html">CONTACT US</a></li>
+      </ul>
+    </nav>
+    <div class="icons">
+      <a href="#"><i class="fas fa-heart"></i></a>
+      <a href="#"><i class="fas fa-shopping-cart"></i></a>
+    </div>
+  </header>
+
+  <div class="sidebar">
+    <div class="filter-section">
+      <h3 class="filter-title">Filter by Price</h3>
+      <input type="range" min="200" max="10000" value="5000" class="price-range" id="priceFilter" />
+      <p>Max Price: Rs<span class="price-value" id="priceValue">5000</span></p>
+    </div>
+
+    <div class="filter-section">
+      <h3 class="filter-title">Categories</h3>
+      <div class="filter-option">
+        <input type="checkbox" id="dresses" checked />
+        <label for="dresses">Summer Dresses</label>
+      </div>
+      <div class="filter-option">
+        <input type="checkbox" id="swimwear" checked />
+        <label for="swimwear">Swimwear</label>
+      </div>
+      <div class="filter-option">
+        <input type="checkbox" id="accessories" checked />
+        <label for="accessories">Accessories</label>
+      </div>
+      <div class="filter-option">
+        <input type="checkbox" id="footwear" checked />
+        <label for="footwear">Footwear</label>
+      </div>
+      <div class="filter-option">
+        <input type="checkbox" id="tops" checked />
+        <label for="tops">Tops & Shirts</label>
+      </div>
+    </div>
+
+    <div class="filter-section">
+      <h3 class="filter-title">Sort By</h3>
+      <div class="filter-option">
+        <input type="radio" name="sort" id="latest" checked />
+        <label for="latest">Latest</label>
+      </div>
+      <div class="filter-option">
+        <input type="radio" name="sort" id="price-asc" />
+        <label for="price-asc">Price: Low to High</label>
+      </div>
+      <div class="filter-option">
+        <input type="radio" name="sort" id="price-desc" />
+        <label for="price-desc">Price: High to Low</label>
+      </div>
+      <div class="filter-option">
+        <input type="radio" name="sort" id="popular" />
+        <label for="popular">Popularity</label>
+      </div>
+    </div>
+  </div>
+
+  <div class="main-container">
+    <h1 class="page-title">SUMMER COLLECTION</h1>
+
+    <div class="products-container" id="summerProductsContainer">
+      <div class="product-card">
+        <img src="https://raisinglobal.com/cdn/shop/products/MAX103_800x.jpg?v=1739597072" alt="Floral Maxi Dress" />
+        <p class="category">Summer Dresses</p>
+        <h3>Floral Maxi Dress</h3>
+        <div class="rating">★★★★★</div>
+        <p class="price"><span class="new-price">Rs 1,499.00</span></p>
+        <a href="floralmaxisummerdress.html" class="quick-view-btn">VIEW DETAILS</a>
+      </div>
+
+      <div class="product-card">
+        <img src="https://tse3.mm.bing.net/th/id/OIP.ahNV9m4unOP1GVrTQ5VqswHaJ3?w=206&h=275&c=7&r=0&o=5&dpr=1.3&pid=1.7" alt="Tropical Bikini Set" />
+        <p class="category">Swimwear</p>
+        <h3>Tropical Bikini Set</h3>
+        <div class="rating">★★★★☆</div>
+        <p class="price"><span class="new-price">Rs 1,299.00</span></p>
+        <a href="tropicalbikiniset.html" class="quick-view-btn">VIEW DETAILS</a>
+      </div>
+
+      <div class="product-card">
+        <img src="https://www.bing.com/th?id=OPAC.W0lXksImZXmu9w474C474&o=5&pid=21.1&w=160&h=185&rs=1&qlt=100&dpr=1.3&c=8&pcl=f5f5f5" alt="Wide Brim Straw Hat" />
+        <p class="category">Accessories</p>
+        <h3>Wide Brim Straw Hat</h3>
+        <div class="rating">★★★★★</div>
+        <p class="price"><span class="new-price">Rs 799.00</span></p>
+        <a href="widebrimstrawhat.html" class="quick-view-btn">VIEW DETAILS</a>
+      </div>
+
+      <div class="product-card">
+        <img src="https://www.bing.com/th?id=OPAC.hDXXajjCCmZU2g474C474&o=5&pid=21.1&w=148&h=198&rs=1&qlt=100&dpr=1.3&bw=6&bc=FFFFFF" alt="Polarized Sunglasses" />
+        <p class="category">Accessories</p>
+        <h3>Polarized Sunglasses</h3>
+        <div class="rating">★★★★☆</div>
+        <p class="price"><span class="new-price">Rs 899.00</span></p>
+        <a href="polarizedsunglasses.html" class="quick-view-btn">VIEW DETAILS</a>
+      </div>
+
+      <div class="product-card">
+        <img src="https://www.bing.com/th?id=OPAC.eFjuuVj1fSBwew474C474&o=5&pid=21.1&w=158&h=223&rs=1&qlt=100&dpr=1.3" alt="Beach Tote Bag" />
+        <p class="category">Accessories</p>
+        <h3>Beach Tote Bag</h3>
+        <div class="rating">★★★★☆</div>
+        <p class="price"><span class="new-price">Rs 1,199.00</span></p>
+        <a href="beachtotebag.html" class="quick-view-btn">VIEW DETAILS</a>
+      </div>
+
+      <div class="product-card">
+        <img src="https://www.bing.com/th?id=OPAC.6821xXMpvXpY9w474C474&o=5&pid=21.1&w=148&h=148&rs=1&qlt=100&dpr=1.3&bw=6&bc=FFFFFF" alt="Espadrille Sandals" />
+        <p class="category">Footwear</p>
+        <h3>Espadrille Sandals</h3>
+        <div class="rating">★★★★★</div>
+        <p class="price"><span class="new-price">Rs 1,299.00</span></p>
+        <a href="espadrillesandals.html" class="quick-view-btn">VIEW DETAILS</a>
+      </div>
+
+      <div class="product-card">
+        <img src="https://www.bing.com/th?id=OPAC.pr68xLYOeXnD7Q474C474&o=5&pid=21.1&w=160&h=160&rs=1&qlt=100&dpr=1.3&c=8&pcl=f5f5f5" alt="Linen Shorts" />
+        <p class="category">Tops & Shirts</p>
+        <h3>Linen Shorts</h3>
+        <div class="rating">★★★★☆</div>
+        <p class="price"><span class="new-price">Rs 999.00</span></p>
+        <a href="linenshorts.html" class="quick-view-btn">VIEW DETAILS</a>
+      </div>
+
+      <div class="product-card">
+        <img src="https://www.bing.com/th?id=OPAC.miiF4s%2b%2br%2fhjWQ474C474&o=5&pid=21.1&w=158&h=210&rs=1&qlt=100&dpr=1.3&c=8&pcl=f5f5f5" alt="Tropical Print Shirt" />
+        <p class="category">Tops & Shirts</p>
+        <h3>Tropical Print Shirt</h3>
+        <div class="rating">★★★★★</div>
+        <p class="price"><span class="new-price">Rs 1,149.00</span></p>
+        <a href="tropicalprintshirt.html" class="quick-view-btn">VIEW DETAILS</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Price range slider functionality
+    const priceSlider = document.getElementById('priceFilter');
+    const priceValue = document.getElementById('priceValue');
+
+    priceSlider.addEventListener('input', function () {
+      priceValue.textContent = this.value;
+      filterProductsByPrice(this.value);
+    });
+
+    // Function to filter products by price
+    function filterProductsByPrice(maxPrice) {
+      const productCards = document.querySelectorAll('.product-card');
+      productCards.forEach(card => {
+        const priceText = card.querySelector('.new-price')?.textContent || '';
+        const price = parseFloat(priceText.replace(/[^\d.]/g, ''));
+        if (price <= maxPrice) {
+          card.style.display = '';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+
+    // Function to create product card HTML
+    function createProductCard(product) {
+      const card = document.createElement('div');
+      card.className = 'product-card';
+
+      // Add sale or new badge if applicable
+      if (product.oldPrice && product.oldPrice > product.price) {
+        const saleBadge = document.createElement('span');
+        saleBadge.className = 'sale-badge';
+        saleBadge.textContent = 'Sale!';
+        card.appendChild(saleBadge);
+      } else if (product.isNew) {
+        const newBadge = document.createElement('span');
+        newBadge.className = 'new-badge';
+        newBadge.textContent = 'New!';
+        card.appendChild(newBadge);
+      }
+
+      // Product image
+      const img = document.createElement('img');
+      img.src = product.image || 'https://via.placeholder.com/250x250?text=No+Image';
+      img.alt = product.name;
+      card.appendChild(img);
+
+      // Category
+      const category = document.createElement('p');
+      category.className = 'category';
+      category.textContent = product.category || 'Uncategorized';
+      card.appendChild(category);
+
+      // Product name
+      const name = document.createElement('h3');
+      name.textContent = product.name;
+      card.appendChild(name);
+
+      // Rating (static stars for now)
+      const rating = document.createElement('div');
+      rating.className = 'rating';
+      rating.textContent = '★★★★★';
+      card.appendChild(rating);
+
+      // Price
+      const price = document.createElement('p');
+      price.className = 'price';
+      if (product.oldPrice && product.oldPrice > product.price) {
+        price.innerHTML = `<span class="old-price">Rs ${product.oldPrice.toFixed(2)}</span> <span class="new-price">Rs ${product.price.toFixed(2)}</span>`;
+      } else {
+        price.innerHTML = `<span class="new-price">Rs ${product.price.toFixed(2)}</span>`;
+      }
+      card.appendChild(price);
+
+      // Quick view button linking to product details page
+      const quickView = document.createElement('a');
+      quickView.className = 'quick-view-btn';
+      quickView.href = `product.html?id=${product._id || product.id}`;
+      quickView.textContent = 'VIEW DETAILS';
+      card.appendChild(quickView);
+
+      // Make entire card clickable except buttons/links
+      card.addEventListener('click', (e) => {
+        if (!e.target.closest('button') && !e.target.closest('a')) {
+          window.location.href = quickView.href;
+        }
+      });
+
+      return card;
+    }
+
+    // Function to render products in the container
+    async function renderProducts() {
+      const container = document.getElementById('dynamicProductsContainer');
+      container.innerHTML = '';
+
+      try {
+        const products = await fetchProducts();
+        products.forEach(product => {
+          const card = createProductCard(product);
+          container.appendChild(card);
+        });
+        filterProductsByPrice(priceSlider.value);
+      } catch (error) {
+        container.innerHTML = '<p>Failed to load products.</p>';
+        console.error('Error loading products:', error);
+      }
+    }
+
+    // Load products on page load
+    document.addEventListener('DOMContentLoaded', () => {
+      renderProducts();
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Women's Collection</title>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@500&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js" crossorigin="anonymous"></script>
+    
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f8f8;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            background: grey;
+            color: white;
+            z-index: 1000;
+        }
+
+        .logo-container {
+            text-align: center;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .large-letter {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: gold;
+        }
+
+        .brand-name, .sub-text {
+            font-family: 'Montserrat', sans-serif;
+            color: gold;
+        }
+
+        .sub-text {
+            font-size: 0.7rem;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 15px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            color: gold;
+        }
+
+        .icons a {
+            color: white;
+            font-size: 20px;
+            margin-left: 15px;
+        }
+
+        .icons a:hover {
+            color: gold;
+        }
+
+        .sidebar {
+            width: 250px;
+            background: white;
+            padding: 20px;
+            height: 100vh;
+            position: fixed;
+            left: 0;
+            top: 80px;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .main-container {
+            display: flex;
+            margin-top: 100px;
+            margin-left: 270px;
+            padding: 20px;
+            width: calc(100% - 270px);
+        }
+
+        .category-section {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            max-width: 100%;
+        }
+
+        .category-row {
+            display: flex;
+            justify-content: space-between;
+            gap: 5px;
+        }
+
+        .category {
+            width: calc(50% - 10px);
+            text-align: center;
+            position: relative;
+        }
+
+        .category img {
+            width: 60%;
+            border-radius: 10px;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .category img:hover {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+            <div class="large-letter">E</div>
+            <div class="brand-name">EVER</div>
+            <div class="sub-text">VOGUE</div>
+        </div>
+
+        <nav>
+            <ul>
+                <li><a href="#">HOME</a></li>
+                <li><a href="#">SHOP</a></li>
+                <li><a href="#">LOOKBOOK</a></li>
+                <li><a href="#">PROFILE</a></li>
+                <li><a href="#">ABOUT US</a></li>
+                <li><a href="#">CONTACT US</a></li>
+            </ul>
+        </nav>
+        <div class="icons">
+            <a href="#"><i class="fas fa-heart"></i></a>
+            <a href="#"><i class="fas fa-shopping-cart"></i></a>
+        </div>
+    </header>
+
+    <div class="sidebar">
+        <br><br>
+        <h3>Filter by Price</h3>
+        <input type="range" min="200" max="10000" value="1000" class="price-range" id="priceFilter">
+        <p>Max Price: Rs<span class="price-value" id="priceValue">1000</span></p>
+    </div>
+
+    <div class="main-container">
+        <div class="content">
+            <h2>TRENDING IN WESTERN WEAR</h2>
+            <div class="category-section">
+                <div class="category-row">
+                    <div class="category">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTOVfWT3c883EV4DREt7k3drS0AZ2YQk9QlnA&s" alt="Moss & Melange">
+                        <h3>Moss & Melange</h3>
+                        <p>The colours of this season</p>
+                        <a href="#">+ EXPLORE</a>
+                    </div>
+                    <div class="category">
+                        <img src="https://www.stylemati.in/cdn/shop/products/mati-dresses-color-block-shift-dress-29160354414681.jpg?v=1646903269" alt="Mod blocking">
+                        <h3>Mod blocking</h3>
+                        <p>Your sofa-to-fridge look</p>
+                        <a href="#">+ EXPLORE</a>
+                    </div>
+            
+                
+                    <div class="category">
+                        <img src="https://ik.imagekit.io/ldqsn9vvwgg/images/1561251.jpg" alt="Red Tops & Tees">
+                        <h3>Red Tops & Tees</h3>
+                        <p>The unofficial symbol of all things bold</p>
+                        <a href="#">+ EXPLORE</a>
+                    </div>
+                    <div class="category">
+                        <img src="https://images.meesho.com/images/products/271322342/dbhj9_512.webp" alt="Smart Daily Wear Tees">
+                        <h3>Smart Daily Wear Tees</h3>
+                        <p>Something new for every day</p>
+                        <a href="#">+ EXPLORE</a>
+                    </div>
+                </div>
+            </div>
+            <h2>TRENDING IN INDIAN WEAR</h2>
+        <div class="category-section">
+            <div class="category-row">
+                <div class="category">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ0uiOhFK09WcujA3pD2VE_MiqJ4Az8sXl3sUkxMNkzn2hp6BDVpII2ade0xoaW8CIqdrs&usqp=CAU" alt="Sarees">
+                    <h3>Elegant Sarees</h3>
+                    <p>Graceful traditional drapes</p>
+                    <a href="#">+ EXPLORE</a>
+                </div>
+                <div class="category">
+                    <img src="https://pictures.kartmax.in/live/sites/9s145MyZrWdIAwpU0JYS/product-images/cotton_printed_blue_kurti_set_with_dupatta_1719991409as2994674_1.jpg" alt="Kurti Sets">
+                    <h3>Kurti Sets</h3>
+                    <p>Perfect for everyday and festive wear</p>
+                    <a href="#">+ EXPLORE</a>
+                </div>
+                <div class="category">
+                    <img src="https://d3nsby4zkkv8rx.cloudfront.net/image/cache/data/designer-lehenga-choli-for-bridal-112489-1200x1650.jpg" alt="Lehenga Choli">
+                    <h3>Lehenga Choli</h3>
+                    <p>Traditional beauty for special occasions</p>
+                    <a href="#">+ EXPLORE</a>
+                </div>
+                <div class="category">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRAjI1Qyw-Q61FU4cVEZRNOD_Y4PhRxHg7J4Q&s" alt="Salwar Suits">
+                    <h3>Salwar Suits</h3>
+                    <p>Comfort meets elegance</p>
+                    <a href="#">+ EXPLORE</a>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

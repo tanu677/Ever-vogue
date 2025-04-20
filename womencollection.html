@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Women Collection - EverVogue</title>
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@500&display=swap" rel="stylesheet" />
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f8f8f8;
+    }
+
+    /* Header */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 20px;
+      background: black;
+      color: white;
+      z-index: 1000;
+    }
+
+    .logo-container {
+      text-align: center;
+      font-family: 'Playfair Display', serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .large-letter {
+      font-size: 2.5rem;
+      font-weight: bold;
+      color: gold;
+      line-height: 0.8;
+    }
+
+    .brand-name {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 500;
+      letter-spacing: 3px;
+      color: gold;
+    }
+
+    .sub-text {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 5px;
+      color: gold;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 15px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s ease;
+    }
+
+    nav a:hover {
+      color: gold;
+    }
+
+    .icons {
+      display: flex;
+      gap: 15px;
+    }
+
+    .icons a {
+      color: white;
+      font-size: 20px;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .icons a:hover {
+      color: gold;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      width: 230px;
+      background: white;
+      padding: 20px;
+      height: 100vh;
+      position: fixed;
+      left: 0;
+      top: 80px;
+      box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Main Content */
+    .main-container {
+      margin-top: 80px;
+      margin-left: 230px;
+      padding: 20px;
+    }
+
+    .page-title {
+      text-align: center;
+      margin: 20px 0 40px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 32px;
+      font-weight: bold;
+      position: relative;
+    }
+
+    .page-title:after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 3px;
+      background-color: gold;
+    }
+
+    /* Products Styling */
+    .products-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 25px;
+      justify-content: center;
+    }
+
+    .product-card {
+      background: #fff;
+      padding: 15px;
+      border-radius: 10px;
+      text-align: center;
+      position: relative;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease-in-out;
+      cursor: pointer;
+    }
+
+    .product-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .product-card img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    .category {
+      font-size: 14px;
+      color: #666;
+      margin-top: 10px;
+    }
+
+    h3 {
+      font-size: 18px;
+      margin: 10px 0;
+      font-weight: 600;
+    }
+
+    .price {
+      font-size: 16px;
+      font-weight: bold;
+    }
+
+    .old-price {
+      text-decoration: line-through;
+      color: red;
+      margin-right: 5px;
+    }
+
+    .new-price {
+      color: #000;
+    }
+
+    .sale-badge {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: #fa6400;
+      color: white;
+      padding: 5px 10px;
+      font-size: 12px;
+      border-radius: 50px;
+      font-weight: bold;
+    }
+
+    .new-badge {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: #32cd32;
+      color: white;
+      padding: 5px 10px;
+      font-size: 12px;
+      border-radius: 50px;
+      font-weight: bold;
+    }
+
+    /* Star Rating Styling */
+    .rating {
+      font-size: 18px;
+      color: #FFD700; /* Gold color for stars */
+      margin: 5px 0 10px;
+    }
+
+    /* Quick-view button */
+    .quick-view-btn {
+      background-color: black;
+      color: white;
+      border: none;
+      padding: 8px 15px;
+      margin-top: 10px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background-color 0.3s;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .quick-view-btn:hover {
+      background-color: gold;
+      color: black;
+    }
+  </style>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js" crossorigin="anonymous"></script>
+</head>
+<body>
+  <header>
+    <div class="logo-container">
+      <div class="large-letter">E</div>
+      <div class="brand-name">EVER</div>
+      <div class="sub-text">VOGUE</div>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="index.html">HOME</a></li>
+
+        <li><a href="lookbook.html">LOOKBOOK</a></li>
+        <li><a href="profile.html">PROFILE</a></li>
+        
+        <li><a href="contact.html">CONTACT US</a></li>
+      </ul>
+    </nav>
+    <div class="icons">
+      <a href="#"><i class="fas fa-heart"></i></a>
+      <a href="#"><i class="fas fa-shopping-cart"></i></a>
+    </div>
+  </header>
+
+  <div class="sidebar">
+    <div class="filter-section">
+      <h3 class="filter-title">Filter by Price</h3>
+      <input type="range" min="200" max="10000" value="5000" class="price-range" id="priceFilter" />
+      <p>Max Price: Rs<span class="price-value" id="priceValue">5000</span></p>
+    </div>
+
+    <div class="filter-section">
+      <h3 class="filter-title">Categories</h3>
+      <div class="filter-option">
+        <input type="checkbox" id="dresses" checked />
+        <label for="dresses">Womens Dresses</label>
+      </div>
+      <div class="filter-option">
+        <input type="checkbox" id="tops" checked />
+        <label for="tops">Womens Tops</label>
+      </div>
+      <div class="filter-option">
+        <input type="checkbox" id="footwear" checked />
+        <label for="footwear">Womens Footwear</label>
+      </div>
+      <div class="filter-option">
+        <input type="checkbox" id="jackets" checked />
+        <label for="jackets">Womens Jackets</label>
+      </div>
+      <div class="filter-option">
+        <input type="checkbox" id="accessories" checked />
+        <label for="accessories">Womens Accessories</label>
+      </div>
+    </div>
+
+    <div class="filter-section">
+      <h3 class="filter-title">Sort By</h3>
+      <div class="filter-option">
+        <input type="radio" name="sort" id="latest" checked />
+        <label for="latest">Latest</label>
+      </div>
+      <div class="filter-option">
+        <input type="radio" name="sort" id="price-asc" />
+        <label for="price-asc">Price: Low to High</label>
+      </div>
+      <div class="filter-option">
+        <input type="radio" name="sort" id="price-desc" />
+        <label for="price-desc">Price: High to Low</label>
+      </div>
+      <div class="filter-option">
+        <input type="radio" name="sort" id="popular" />
+        <label for="popular">Popularity</label>
+      </div>
+    </div>
+  </div>
+
+  <div class="main-container">
+    <h1 class="page-title">WOMENS COLLECTION</h1>
+
+    <div class="products-container" id="womensProductsContainer">
+      <!-- Existing products will be listed here -->
+      <!-- I will add two new products and create their pages -->
+      <div class="product-card">
+        <img src="https://images.meesho.com/images/products/384983175/fhgox_512.webp" alt="Women Floral Dress" />
+        <p class="category">Womens Dresses</p>
+        <h3>Women Floral Dress</h3>
+        <div class="rating">★★★★★</div>
+        <p class="price"><span class="new-price">Rs 3200.00</span></p>
+        <a href="womenfloraldress.html" class="quick-view-btn">VIEW DETAILS</a>
+      </div>
+
+      
+      <div class="product-card">
+        <img src="https://www.giva.co/cdn/shop/files/PD096_1.jpg?v=1712924838&width=713" alt="Women Jewellery" />
+        <p class="category">Womens Accessories</p>
+        <h3>Women Jewellery</h3>
+        <div class="rating">★★★★★</div>
+        <p class="price"><span class="new-price">Rs 4500.00</span></p>
+        <a href="womenjewellery.html" class="quick-view-btn">VIEW DETAILS</a>
+      </div>
+
+     
+
+      <div class="product-card">
+        <img src="https://d1311wbk6unapo.cloudfront.net/NushopCatalogue/tr:f-webp,w-1200,fo-auto/ifyRd41c_GS4X6HFYDT_2024-02-09_1.jpeg" alt="Women Lehenga" />
+        <p class="category">Womens Traditional Wear</p>
+        <h3>Women Lehenga</h3>
+        <div class="rating">★★★★★</div>
+        <p class="price"><span class="new-price">Rs 7500.00</span></p>
+        <a href="womenlehenga.html" class="quick-view-btn">VIEW DETAILS</a>
+      </div>
+
+      <div class="product-card">
+        <img src="https://assets.ajio.com/medias/sys_master/root/20231116/9aXk/6555dd3bafa4cf41f58cff96/-473Wx593H-466805488-red-MODEL.jpg" alt="Women Saree" />
+        <p class="category">Womens Traditional Wear</p>
+        <h3>Women Saree</h3>
+        <div class="rating">★★★★★</div>
+        <p class="price"><span class="new-price">Rs 6800.00</span></p>
+        <a href="womensaree.html" class="quick-view-btn">VIEW DETAILS</a>
+      </div>
+
+      <div class="product-card">
+        <img src="https://images.meesho.com/images/products/292353396/zpxp3_512.webp" alt="Women Kurti" />
+        <p class="category">Womens Traditional Wear</p>
+        <h3>Women Kurti</h3>
+        <div class="rating">★★★★☆</div>
+        <p class="price"><span class="new-price">Rs 2200.00</span></p>
+        <a href="womenkurti.html" class="quick-view-btn">VIEW DETAILS</a>
+      </div>
+
+      <div class="product-card">
+        <img src="https://images.bewakoof.com/t1080/women-s-blue-inner-peace-graphic-printed-boyfriend-t-shirt-295707-1716887077-1.jpg" alt="Women Tops & Tees" />
+        <p class="category">Womens Tops</p>
+        <h3>Women Tops & Tees</h3>
+        <div class="rating">★★★★★</div>
+        <p class="price"><span class="new-price">Rs 1800.00</span></p>
+        <a href="womentopandtees.html" class="quick-view-btn">VIEW DETAILS</a>
+      </div>
+    </div>
+    </div>
+  </div>
+  <script>
+    // Price range slider functionality
+    const priceSlider = document.getElementById('priceFilter');
+    const priceValue = document.getElementById('priceValue');
+
+    priceSlider.addEventListener('input', function () {
+      priceValue.textContent = this.value;
+      filterProductsByPrice(this.value);
+    });
+
+    // Function to filter products by price
+    function filterProductsByPrice(maxPrice) {
+      const productCards = document.querySelectorAll('.product-card');
+      productCards.forEach(card => {
+        const priceText = card.querySelector('.new-price')?.textContent || '';
+        const price = parseFloat(priceText.replace(/[^\d.]/g, ''));
+        if (price <= maxPrice) {
+          card.style.display = '';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+  </script>
+</body>
+</html>
+</answer>
